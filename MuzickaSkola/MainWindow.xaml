@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MuzickaSkola"
         mc:Ignorable="d"
-        Title="Muzicka Skola" Height="515" Width="862.308" Visibility="Visible" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Muzicka Skola" Height="535" Width="862.308" Visibility="Visible" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Effect>
         <DropShadowEffect BlurRadius="20"/>
     </Window.Effect>
     <Window.Resources>
         <Storyboard x:Key="sbShowSidenav" >
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-150,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-150,0,0,0" To="0,0,0,0" DecelerationRatio=".7" Duration="0:0:1" />
         </Storyboard>
         <Storyboard x:Key="sbHideSidenav">
             <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-150,0,0,0" AccelerationRatio=".9" Duration="0:0:1" />
@@ -19,10 +19,20 @@
     </Window.Resources>
     <Grid Background="#ffffff">
 
-        <StackPanel x:Name="spSideNav" Margin="-150,0,0,0" Background="#2B303D" HorizontalAlignment="Left" Height="515" VerticalAlignment="Top" Width="215">
+        <StackPanel x:Name="spSideNav" Margin="-150,0,0,0" Background="#2B303D" HorizontalAlignment="Left" Width="215">
             <!-- LOGO -->
             <DockPanel Background="#242631" Width="215">
-                <Border Padding="0, 20" Width="161">
+                <DockPanel.Style>
+                    <Style TargetType="{x:Type DockPanel}">
+                        <Setter Property="Background" Value="#2B303D"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#242631"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DockPanel.Style>
+                <Border Padding="0, 30" Width="161">
                     <Label Content="muzicka skola" FontWeight="Bold" Foreground="White" FontSize="18" HorizontalAlignment="Left" Width="141" Margin="10,0,0,0"/>
                 </Border>
                 <Border Padding="0, 10, 10, 10" HorizontalAlignment="Right">
@@ -31,106 +41,247 @@
                             <Button.Template>
                                 <ControlTemplate>
                                     <Border HorizontalAlignment="Center" VerticalAlignment="Center" >
-                                        <Image x:Name="icons8_Xbox_Menu_50px_1_png" Height="25" Source="Images/icons8_Xbox_Menu_50px_1.png" Stretch="Fill" Width="25"/>
+                                        <Image x:Name="icons8_Xbox_Menu_50px_1_png" Height="25" Stretch="Fill" Width="25">
+                                            <Image.Style>
+                                                <Style TargetType="{x:Type Image}">
+                                                    <Setter Property="Source" Value="Images/icons8_Xbox_Menu_50px_1.png"/>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Source" Value="Images/icons8_Xbox_Menu_50px_3.png"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Image.Style>
+                                        </Image>
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>
+
                         </Button>
                     </Border>
                 </Border>
             </DockPanel>
             <!-- END OF LOGO -->
             <!-- SELECTED ITEM / HOME -->
-            <DockPanel Background="#2B303D" Width="215">
-                <Border Padding="10" HorizontalAlignment="Center" Width="148">
-                    <Label Content="Pocetna" Foreground="White" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
-                </Border>
-                <Border Padding="10" HorizontalAlignment="Right">
-                    <Border Padding="9" Background="#00BAC0">
-                        <Image x:Name="icons8_Heating_Room_50px_png" Height="25" Source="Images/icons8_Heating_Room_50px.png" Stretch="Fill" Width="25"/>
+            <Button>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <DockPanel Width="215" Cursor="Hand">
+                            <DockPanel.Style>
+                                <Style TargetType="{x:Type DockPanel}">
+                                    <Setter Property="Background" Value="#2B303D"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#242631"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DockPanel.Style>
+                            <Border Padding="10" HorizontalAlignment="Center" Width="148">
+                                <Label Content="Pocetna" Foreground="White" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
+                            </Border>
+                            <Border Padding="10" HorizontalAlignment="Right">
+                                <Border Padding="9" Background="#00BAC0">
+                                    <Image x:Name="icons8_Heating_Room_50px_png" Height="25" Source="Images/icons8_Heating_Room_50px.png" Stretch="Fill" Width="25"/>
 
-                    </Border>
-                </Border>
-            </DockPanel>
+                                </Border>
+                            </Border>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
             <!-- END OF SELECTED ITEM / HOME -->
             <!-- NOT SELECTED ITEM / UCENIK -->
-            <DockPanel Background="#2B303D" Width="215">
-                <Border Padding="10" HorizontalAlignment="Center" Width="148">
-                    <Label Content="Ucenik" Foreground="Gray" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
-                </Border>
-                <Border Padding="10" HorizontalAlignment="Right">
-                    <Border Padding="9" Background="#242631">
-                        <Image x:Name="icons8_Graduation_Cap_48px_png" Height="25" Source="Images/icons8_Graduation_Cap_48px.png" Stretch="Fill" Width="25"/>
-
-                    </Border>
-                </Border>
-            </DockPanel>
+            <Button>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <DockPanel Width="215" Cursor="Hand">
+                            <DockPanel.Style>
+                                <Style TargetType="{x:Type DockPanel}">
+                                    <Setter Property="Background" Value="#2B303D"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#242631"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DockPanel.Style>
+                            <Border Padding="10" HorizontalAlignment="Center" Width="148">
+                                <Label Content="Ucenik" Foreground="Gray" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
+                            </Border>
+                            <Border Padding="10" HorizontalAlignment="Right">
+                                <Border Padding="9" Background="#242631">
+                                    <Image x:Name="icons8_Graduation_Cap_48px_png" Height="25" Source="Images/icons8_Graduation_Cap_48px.png" Stretch="Fill" Width="25"/>
+                                </Border>
+                            </Border>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
             <!-- END OF NOT SELECTED ITEM / UCENIK -->
             <!-- NOT SELECTED ITEM / PROFESOR -->
-            <DockPanel Background="#2B303D" Width="215">
-                <Border Padding="10" HorizontalAlignment="Center" Width="148">
-                    <Label Content="Profesor" Foreground="Gray" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
-                </Border>
-                <Border Padding="10" HorizontalAlignment="Right">
-                    <Border Padding="9" Background="#242631">
-                        <Image x:Name="icons8_Training_50px_png" Height="25" Source="Images/icons8_Training_50px.png" Stretch="Fill" Width="25"/>
+            <Button>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
 
-                    </Border>
-                </Border>
-            </DockPanel>
+                        <DockPanel Width="215" Cursor="Hand">
+                            <DockPanel.Style>
+                                <Style TargetType="{x:Type DockPanel}">
+                                    <Setter Property="Background" Value="#2B303D"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#242631"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DockPanel.Style>
+                            <Border Padding="10" HorizontalAlignment="Center" Width="148">
+                                <Label Content="Profesor" Foreground="Gray" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
+                            </Border>
+                            <Border Padding="10" HorizontalAlignment="Right">
+                                <Border Padding="9" Background="#242631">
+                                    <Image x:Name="icons8_Training_50px_png" Height="25" Source="Images/icons8_Training_50px.png" Stretch="Fill" Width="25"/>
+
+                                </Border>
+                            </Border>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
             <!-- END OF NOT SELECTED ITEM / PROFESOR -->
             <!-- NOT SELECTED ITEM / INSTRUMENT -->
-            <DockPanel Background="#2B303D" Width="215">
-                <Border Padding="10" HorizontalAlignment="Center" Width="148">
-                    <Label Content="Instrument" Foreground="Gray" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
-                </Border>
-                <Border Padding="10" HorizontalAlignment="Right">
-                    <Border Padding="9" Background="#242631">
-                        <Image x:Name="icons8_Drums_50px_png" Height="25" Source="Images/icons8_Drums_50px.png" Stretch="Fill" Width="25"/>
+            <Button>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <DockPanel Width="215" Cursor="Hand">
+                            <DockPanel.Style>
+                                <Style TargetType="{x:Type DockPanel}">
+                                    <Setter Property="Background" Value="#2B303D"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#242631"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DockPanel.Style>
+                            <Border Padding="10" HorizontalAlignment="Center" Width="148">
+                                <Label Content="Instrument" Foreground="Gray" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
+                            </Border>
+                            <Border Padding="10" HorizontalAlignment="Right">
+                                <Border Padding="9" Background="#242631">
+                                    <Image x:Name="icons8_Drums_50px_png" Height="25" Source="Images/icons8_Drums_50px.png" Stretch="Fill" Width="25"/>
 
-                    </Border>
-                </Border>
-            </DockPanel>
+                                </Border>
+                            </Border>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
             <!-- END OF NOT SELECTED ITEM / INSTRUMENT -->
             <!-- NOT SELECTED ITEM / ISPITANIK -->
-            <DockPanel Background="#2B303D" Width="215">
-                <Border Padding="10" HorizontalAlignment="Center" Width="148">
-                    <Label Content="Ispitanik" Foreground="Gray" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
-                </Border>
-                <Border Padding="10" HorizontalAlignment="Right">
-                    <Border Padding="9" Background="#242631">
-                        <Image x:Name="icons8_User_Typing_Using_Typewriter_50px_1_png" Height="25" Source="Images/icons8_User_Typing_Using_Typewriter_50px_1.png" Stretch="Fill" Width="25"/>
-                    </Border>
-                </Border>
-            </DockPanel>
+            <Button>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <DockPanel Width="215" Cursor="Hand">
+                            <DockPanel.Style>
+                                <Style TargetType="{x:Type DockPanel}">
+                                    <Setter Property="Background" Value="#2B303D"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#242631"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DockPanel.Style>
+                            <Border Padding="10" HorizontalAlignment="Center" Width="148">
+                                <Label Content="Ispitanik" Foreground="Gray" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
+                            </Border>
+                            <Border Padding="10" HorizontalAlignment="Right">
+                                <Border Padding="9" Background="#242631">
+                                    <Image x:Name="icons8_User_Typing_Using_Typewriter_50px_1_png" Height="25" Source="Images/icons8_User_Typing_Using_Typewriter_50px_1.png" Stretch="Fill" Width="25"/>
+                                </Border>
+                            </Border>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
             <!-- END OF NOT SELECTED ITEM / ISPITANIK-->
             <!-- NOT SELECTED ITEM / ISPIT-->
-            <DockPanel Background="#2B303D" Width="215">
-                <Border Padding="10" HorizontalAlignment="Center" Width="148">
-                    <Label Content="Ispit" Foreground="Gray" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
-                </Border>
-                <Border Padding="10" HorizontalAlignment="Right">
-                    <Border Padding="9" Background="#242631">
-                        <Image x:Name="icons8_Test_Passed_50px_1_png" Height="25" Source="Images/icons8_Test_Passed_50px_1.png" Stretch="Fill" Width="25"/>
-                    </Border>
-                </Border>
-            </DockPanel>
+            <Button>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <DockPanel Width="215" Cursor="Hand">
+                            <DockPanel.Style>
+                                <Style TargetType="{x:Type DockPanel}">
+                                    <Setter Property="Background" Value="#2B303D"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#242631"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DockPanel.Style>
+                            <Border Padding="10" HorizontalAlignment="Center" Width="148">
+                                <Label Content="Ispit" Foreground="Gray" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
+                            </Border>
+                            <Border Padding="10" HorizontalAlignment="Right">
+                                <Border Padding="9" Background="#242631">
+                                    <Image x:Name="icons8_Test_Passed_50px_1_png" Height="25" Source="Images/icons8_Test_Passed_50px_1.png" Stretch="Fill" Width="25"/>
+                                </Border>
+                            </Border>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
             <!-- END OF NOT SELECTED ITEM / ISPIT -->
             <!-- NOT SELECTED ITEM / PITANJA -->
-            <DockPanel Background="#2B303D" Width="215">
-                <Border Padding="10" HorizontalAlignment="Center" Width="148">
-                    <Label Content="Pitanja" Foreground="Gray" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
-                </Border>
-                <Border Padding="10" HorizontalAlignment="Right">
-                    <Border Padding="9" Background="#242631">
-                        <Image x:Name="icons8_Questionnaire_48px_png" Height="25" Source="Images/icons8_Questionnaire_48px.png" Stretch="Fill" Width="25"/>
-                    </Border>
-                </Border>
-            </DockPanel>
+            <Button>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <DockPanel Width="215" Cursor="Hand">
+                            <DockPanel.Style>
+                                <Style TargetType="{x:Type DockPanel}">
+                                    <Setter Property="Background" Value="#2B303D"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#242631"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DockPanel.Style>
+                            <Border Padding="10" HorizontalAlignment="Center" Width="148">
+                                <Label Content="Pitanja" Foreground="Gray" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
+                            </Border>
+                            <Border Padding="10" HorizontalAlignment="Right">
+                                <Border x:Name="test1" Padding="9" Background="#242631">
+                                    <Image x:Name="icons8_Questionnaire_48px_png" Height="25" Source="Images/icons8_Questionnaire_48px.png" Stretch="Fill" Width="25"/>
+                                </Border>
+                            </Border>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
             <!-- END OF NOT SELECTED ITEM / PITANJA -->
-
-
         </StackPanel>
-
+        <Button x:Name="btnClose" Width="30" Height="30" Margin="822,10,10,495" Click="btnClose_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border>
+                        <Image Cursor="Hand" Height="25" Stretch="Fill" Width="25">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="Images/icons8_Multiply_52px.png"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Source" Value="Images/icons8_Multiply_52px_2.png"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </Window>

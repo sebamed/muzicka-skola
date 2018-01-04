@@ -47,5 +47,10 @@ namespace MuzickaSkola
             this.SidebarOpened = !this.SidebarOpened;
         }
 
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            // Dodati diskonektovanje 
+            this.Close();
+        }
     }
 }

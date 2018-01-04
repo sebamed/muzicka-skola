@@ -144,5 +144,14 @@
   <ItemGroup>
     <Resource Include="Images\icons8_Questionnaire_48px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8_Xbox_Menu_50px_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8_Multiply_52px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8_Multiply_52px_2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
