@@ -69,7 +69,7 @@
                         <DockPanel Width="215" Cursor="Hand">
                             <DockPanel.Style>
                                 <Style TargetType="{x:Type DockPanel}">
-                                    <Setter Property="Background" Value="#2B303D"/>
+                                    <Setter Property="Background" Value="#242631"/>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
                                             <Setter Property="Background" Value="#242631"/>
@@ -78,7 +78,7 @@
                                 </Style>
                             </DockPanel.Style>
                             <Border Padding="10" HorizontalAlignment="Center" Width="148">
-                                <Label x:Name="aaa" Content="Pocetna" Foreground="White" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
+                                <Label x:Name="aaa" Content="Pocetna" Foreground="Gray" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
                             </Border>
                             <Border Padding="10" HorizontalAlignment="Right">
                                 <Border Padding="9" Background="#00BAC0">
