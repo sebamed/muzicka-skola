@@ -130,7 +130,7 @@ namespace MuzickaSkola
                     {
                         Button btn = (Button)current;
                         btn.Background = Brushes.DarkBlue;
-                        for (int j = 0; j < VisualTreeHelper.GetChildrenCount(current); j++) // usao u dugme
+                        for (int j = 0; j < VisualTreeHelper.GetChildrenCount(current); j++) // usao u dugme 
                         {
                             current = VisualTreeHelper.GetChild(current, j);
                             if (current.GetType().Equals(typeof(Border)))
