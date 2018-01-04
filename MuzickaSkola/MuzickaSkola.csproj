@@ -97,9 +97,6 @@
     <Folder Include="Forms\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\icons8_Classic_Music_64px_2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\icons8_Home_48px.png" />
   </ItemGroup>
   <ItemGroup>
@@ -119,9 +116,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\icons8_Student_Male_50px_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\icons8_Graduation_Cap_52px.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\icons8_Xbox_Menu_50px_1.png" />
@@ -152,6 +146,27 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\icons8_Multiply_52px_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8_Heating_Room_50px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8_Graduation_Cap_48px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8_Training_50px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8_Drums_50px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8_User_Typing_Using_Typewriter_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8_Test_Passed_50px_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8_Questionnaire_48px_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

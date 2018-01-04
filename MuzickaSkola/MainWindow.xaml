@@ -11,13 +11,13 @@
     </Window.Effect>
     <Window.Resources>
         <Storyboard x:Key="sbShowSidenav" >
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-150,0,0,0" To="0,0,0,0" DecelerationRatio=".7" Duration="0:0:1" />
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-150,0,0,0" To="0,0,0,0" DecelerationRatio=".5" Duration="0:0:1" />
         </Storyboard>
         <Storyboard x:Key="sbHideSidenav">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-150,0,0,0" AccelerationRatio=".9" Duration="0:0:1" />
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-150,0,0,0" AccelerationRatio=".7" Duration="0:0:1" />
         </Storyboard>
     </Window.Resources>
-    <Grid Background="#ffffff">
+    <Grid x:Name="gridMain" Background="#ffffff">
 
         <StackPanel x:Name="spSideNav" Margin="-150,0,0,0" Background="#2B303D" HorizontalAlignment="Left" Width="215">
             <!-- LOGO -->
@@ -63,7 +63,7 @@
             </DockPanel>
             <!-- END OF LOGO -->
             <!-- SELECTED ITEM / HOME -->
-            <Button>
+            <Button x:Name="btnSNPocetna" Click="btnSNPocetna_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <DockPanel Width="215" Cursor="Hand">
@@ -78,12 +78,11 @@
                                 </Style>
                             </DockPanel.Style>
                             <Border Padding="10" HorizontalAlignment="Center" Width="148">
-                                <Label Content="Pocetna" Foreground="White" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
+                                <Label x:Name="aaa" Content="Pocetna" Foreground="White" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
                             </Border>
                             <Border Padding="10" HorizontalAlignment="Right">
                                 <Border Padding="9" Background="#00BAC0">
                                     <Image x:Name="icons8_Heating_Room_50px_png" Height="25" Source="Images/icons8_Heating_Room_50px.png" Stretch="Fill" Width="25"/>
-
                                 </Border>
                             </Border>
                         </DockPanel>
@@ -92,7 +91,7 @@
             </Button>
             <!-- END OF SELECTED ITEM / HOME -->
             <!-- NOT SELECTED ITEM / UCENIK -->
-            <Button>
+            <Button x:Name="btnSNUcenik" Click="btnSNUcenik_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <DockPanel Width="215" Cursor="Hand">
@@ -106,7 +105,7 @@
                                     </Style.Triggers>
                                 </Style>
                             </DockPanel.Style>
-                            <Border Padding="10" HorizontalAlignment="Center" Width="148">
+                            <Border x:Name="brdrSNUcenik" Padding="10" HorizontalAlignment="Center" Width="148">
                                 <Label Content="Ucenik" Foreground="Gray" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
                             </Border>
                             <Border Padding="10" HorizontalAlignment="Right">
@@ -120,7 +119,7 @@
             </Button>
             <!-- END OF NOT SELECTED ITEM / UCENIK -->
             <!-- NOT SELECTED ITEM / PROFESOR -->
-            <Button>
+            <Button x:Name="btnSNProfesor" Click="btnSNProfesor_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
 
@@ -150,7 +149,7 @@
             </Button>
             <!-- END OF NOT SELECTED ITEM / PROFESOR -->
             <!-- NOT SELECTED ITEM / INSTRUMENT -->
-            <Button>
+            <Button x:Name="btnSNInstrument" Click="btnSNInstrument_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <DockPanel Width="215" Cursor="Hand">
@@ -179,7 +178,7 @@
             </Button>
             <!-- END OF NOT SELECTED ITEM / INSTRUMENT -->
             <!-- NOT SELECTED ITEM / ISPITANIK -->
-            <Button>
+            <Button x:Name="btnSNIspitanik" Click="btnSNIspitanik_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <DockPanel Width="215" Cursor="Hand">
@@ -207,7 +206,7 @@
             </Button>
             <!-- END OF NOT SELECTED ITEM / ISPITANIK-->
             <!-- NOT SELECTED ITEM / ISPIT-->
-            <Button>
+            <Button x:Name="btnSNIspit" Click="btnSNIspit_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <DockPanel Width="215" Cursor="Hand">
@@ -235,7 +234,7 @@
             </Button>
             <!-- END OF NOT SELECTED ITEM / ISPIT -->
             <!-- NOT SELECTED ITEM / PITANJA -->
-            <Button>
+            <Button x:Name="btnSNPitanja" Click="btnSNPitanja_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <DockPanel Width="215" Cursor="Hand">
