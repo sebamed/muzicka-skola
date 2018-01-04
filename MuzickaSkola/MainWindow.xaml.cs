@@ -59,9 +59,7 @@ namespace MuzickaSkola
         {
             for (int i = 0; i < VisualTreeHelper.GetChildrenCount(this.spSideNav); i++) // usao u sidenav
             {
-                    //MessageBox.Show("Jeste " + this.currentlyActive);
                     DependencyObject current = VisualTreeHelper.GetChild(this.spSideNav, inAc + 1);
-                    //MessageBox.Show(current.ToString());
                     if (current.GetType().Equals(typeof(Button)))
                     {
                         Button btn = (Button)current;
@@ -127,9 +125,7 @@ namespace MuzickaSkola
         {
             for (int i = 0; i < VisualTreeHelper.GetChildrenCount(this.spSideNav); i++) // usao u sidenav
             {
-                    //MessageBox.Show("Jeste " + this.currentlyActive);
                     DependencyObject current = VisualTreeHelper.GetChild(this.spSideNav, this.currentlyActive + 1);
-                    //MessageBox.Show(current.ToString());
                     if (current.GetType().Equals(typeof(Button)))
                     {
                         Button btn = (Button)current;
