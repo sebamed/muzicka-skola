@@ -9,9 +9,17 @@
     <Window.Effect>
         <DropShadowEffect BlurRadius="20"/>
     </Window.Effect>
+    <Window.Resources>
+        <Storyboard x:Key="sbShowSidenav" >
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-150,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
+        </Storyboard>
+        <Storyboard x:Key="sbHideSidenav">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-150,0,0,0" AccelerationRatio=".9" Duration="0:0:1" />
+        </Storyboard>
+    </Window.Resources>
     <Grid Background="#ffffff">
 
-        <StackPanel Background="#2B303D" HorizontalAlignment="Left" Height="515" VerticalAlignment="Top" Width="215">
+        <StackPanel x:Name="spSideNav" Margin="-150,0,0,0" Background="#2B303D" HorizontalAlignment="Left" Height="515" VerticalAlignment="Top" Width="215">
             <!-- LOGO -->
             <DockPanel Background="#242631" Width="215">
                 <Border Padding="0, 20" Width="161">
@@ -19,7 +27,15 @@
                 </Border>
                 <Border Padding="0, 10, 10, 10" HorizontalAlignment="Right">
                     <Border Padding="9">
-                        <Image x:Name="icons8_Xbox_Menu_50px_1_png" Height="25" Source="icons8_Xbox_Menu_50px_1.png" Stretch="Fill" Width="25"/>
+                        <Button x:Name="btnCollapseMenu" Click="btnCollapseMenu_Click" Cursor="Hand">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Border HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                        <Image x:Name="icons8_Xbox_Menu_50px_1_png" Height="25" Source="Images/icons8_Xbox_Menu_50px_1.png" Stretch="Fill" Width="25"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
                     </Border>
                 </Border>
             </DockPanel>
@@ -31,7 +47,7 @@
                 </Border>
                 <Border Padding="10" HorizontalAlignment="Right">
                     <Border Padding="9" Background="#00BAC0">
-                        <Image x:Name="icons8_Heating_Room_50px_png" Height="25" Source="icons8_Heating_Room_50px.png" Stretch="Fill" Width="25"/>
+                        <Image x:Name="icons8_Heating_Room_50px_png" Height="25" Source="Images/icons8_Heating_Room_50px.png" Stretch="Fill" Width="25"/>
 
                     </Border>
                 </Border>
@@ -44,7 +60,7 @@
                 </Border>
                 <Border Padding="10" HorizontalAlignment="Right">
                     <Border Padding="9" Background="#242631">
-                        <Image x:Name="icons8_Graduation_Cap_48px_png" Height="25" Source="icons8_Graduation_Cap_48px.png" Stretch="Fill" Width="25"/>
+                        <Image x:Name="icons8_Graduation_Cap_48px_png" Height="25" Source="Images/icons8_Graduation_Cap_48px.png" Stretch="Fill" Width="25"/>
 
                     </Border>
                 </Border>
@@ -57,7 +73,7 @@
                 </Border>
                 <Border Padding="10" HorizontalAlignment="Right">
                     <Border Padding="9" Background="#242631">
-                        <Image x:Name="icons8_Training_50px_png" Height="25" Source="icons8_Training_50px.png" Stretch="Fill" Width="25"/>
+                        <Image x:Name="icons8_Training_50px_png" Height="25" Source="Images/icons8_Training_50px.png" Stretch="Fill" Width="25"/>
 
                     </Border>
                 </Border>
@@ -70,7 +86,7 @@
                 </Border>
                 <Border Padding="10" HorizontalAlignment="Right">
                     <Border Padding="9" Background="#242631">
-                        <Image x:Name="icons8_Drums_50px_png" Height="25" Source="icons8_Drums_50px.png" Stretch="Fill" Width="25"/>
+                        <Image x:Name="icons8_Drums_50px_png" Height="25" Source="Images/icons8_Drums_50px.png" Stretch="Fill" Width="25"/>
 
                     </Border>
                 </Border>
@@ -83,7 +99,7 @@
                 </Border>
                 <Border Padding="10" HorizontalAlignment="Right">
                     <Border Padding="9" Background="#242631">
-                        <Image x:Name="icons8_User_Typing_Using_Typewriter_50px_1_png" Height="25" Source="icons8_User_Typing_Using_Typewriter_50px_1.png" Stretch="Fill" Width="25"/>
+                        <Image x:Name="icons8_User_Typing_Using_Typewriter_50px_1_png" Height="25" Source="Images/icons8_User_Typing_Using_Typewriter_50px_1.png" Stretch="Fill" Width="25"/>
                     </Border>
                 </Border>
             </DockPanel>
@@ -95,7 +111,7 @@
                 </Border>
                 <Border Padding="10" HorizontalAlignment="Right">
                     <Border Padding="9" Background="#242631">
-                        <Image x:Name="icons8_Test_Passed_50px_1_png" Height="25" Source="icons8_Test_Passed_50px_1.png" Stretch="Fill" Width="25"/>
+                        <Image x:Name="icons8_Test_Passed_50px_1_png" Height="25" Source="Images/icons8_Test_Passed_50px_1.png" Stretch="Fill" Width="25"/>
                     </Border>
                 </Border>
             </DockPanel>
@@ -107,7 +123,7 @@
                 </Border>
                 <Border Padding="10" HorizontalAlignment="Right">
                     <Border Padding="9" Background="#242631">
-                        <Image x:Name="icons8_Questionnaire_48px_png" Height="25" Source="icons8_Questionnaire_48px.png" Stretch="Fill" Width="25"/>
+                        <Image x:Name="icons8_Questionnaire_48px_png" Height="25" Source="Images/icons8_Questionnaire_48px.png" Stretch="Fill" Width="25"/>
                     </Border>
                 </Border>
             </DockPanel>
@@ -115,9 +131,6 @@
 
 
         </StackPanel>
-
-
-
 
     </Grid>
 </Window>
