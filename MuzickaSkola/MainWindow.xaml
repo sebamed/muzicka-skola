@@ -285,119 +285,119 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Grid Width="70" HorizontalAlignment="Right">
+        <Grid Panel.ZIndex="998" Width="70" HorizontalAlignment="Right">
             <Grid.Effect>
                 <DropShadowEffect Direction="180" BlurRadius="10" ShadowDepth="3" Opacity="0.7"/>
             </Grid.Effect>
-            <Button x:Name="btnRNAdd" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,176,0,314">
-            <Button.ToolTip>
-                <TextBlock>
+            <Button x:Name="btnRNAdd" Click="btnRNAdd_Click" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,176,0,314">
+                <Button.ToolTip>
+                    <TextBlock>
                 <Run>Dodaj</Run>
-                </TextBlock>
-            </Button.ToolTip>
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-                    <Border Padding="10">
-                        <Border.Style>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="Width" Value="50"/>
-                                <Setter Property="Background" Value="#242631"/>
+                    </TextBlock>
+                </Button.ToolTip>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Padding="10">
+                            <Border.Style>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="Width" Value="50"/>
+                                    <Setter Property="Background" Value="#242631"/>
                                     <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Width" Value="70"/>
-                                        <Setter Property="Background" Value="#2ecc71"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Border.Style>
-                        <Image Height="25" Source="Images/icons8_Plus_52px.png" Width="25"/>
-                    </Border>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Width" Value="70"/>
+                                            <Setter Property="Background" Value="#2ecc71"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <Image Height="25" Source="Images/icons8_Plus_52px.png" Width="25"/>
+                        </Border>
 
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
-        <Button x:Name="btnRNEdit" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,221,0,269">
-            <Button.ToolTip>
-                <TextBlock>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="btnRNEdit" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,221,0,269">
+                <Button.ToolTip>
+                    <TextBlock>
                 <Run>Izmeni</Run>
-                </TextBlock>
-            </Button.ToolTip>
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-                    <Border Padding="10">
-                        
-                        <Border.Style>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="Width" Value="50"/>
-                                <Setter Property="Background" Value="#242631"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Width" Value="70"/>
-                                        <Setter Property="Background" Value="#f1c40f"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Border.Style>
-                        <Image Height="25" Source="Images/icons8_Edit_64px.png" Width="25"/>
-                    </Border>
+                    </TextBlock>
+                </Button.ToolTip>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Padding="10">
 
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
-        <Button x:Name="btnRNRemove" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,266,0,224">
-            <Button.ToolTip>
-                <TextBlock>
+                            <Border.Style>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="Width" Value="50"/>
+                                    <Setter Property="Background" Value="#242631"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Width" Value="70"/>
+                                            <Setter Property="Background" Value="#f1c40f"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <Image Height="25" Source="Images/icons8_Edit_64px.png" Width="25"/>
+                        </Border>
+
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="btnRNRemove" Click="btnRNRemove_Click" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,266,0,224">
+                <Button.ToolTip>
+                    <TextBlock>
                 <Run>Izbrisi</Run>
-                </TextBlock>
-            </Button.ToolTip>
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-                    <Border Padding="10">
-                        <Border.Style>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="Width" Value="50"/>
-                                <Setter Property="Background" Value="#242631"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Width" Value="70"/>
-                                        <Setter Property="Background" Value="#e74c3c"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Border.Style>
-                        <Image Height="25" Source="Images/icons8_Remove_50px.png" Width="25"/>
-                    </Border>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
-        <Button x:Name="btnRNRefresh" Click="btnRNRefresh_Click" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,311,0,179">
-            <Button.ToolTip>
-                <TextBlock>
+                    </TextBlock>
+                </Button.ToolTip>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Padding="10">
+                            <Border.Style>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="Width" Value="50"/>
+                                    <Setter Property="Background" Value="#242631"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Width" Value="70"/>
+                                            <Setter Property="Background" Value="#e74c3c"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <Image Height="25" Source="Images/icons8_Remove_50px.png" Width="25"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="btnRNRefresh" Click="btnRNRefresh_Click" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,311,0,179">
+                <Button.ToolTip>
+                    <TextBlock>
                 <Run>Refresuj</Run>
-                </TextBlock>
-            </Button.ToolTip>
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-                    <Border Padding="10">
-                        <Border.Style>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="Width" Value="50"/>
-                                <Setter Property="Background" Value="#242631"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Width" Value="70"/>
-                                        <Setter Property="Background" Value="#3498db"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Border.Style>
-                        <Image Height="25" Source="Images/icons8_Refresh_52px.png" Width="25"/>
-                    </Border>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
+                    </TextBlock>
+                </Button.ToolTip>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Padding="10">
+                            <Border.Style>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="Width" Value="50"/>
+                                    <Setter Property="Background" Value="#242631"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Width" Value="70"/>
+                                            <Setter Property="Background" Value="#3498db"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <Image Height="25" Source="Images/icons8_Refresh_52px.png" Width="25"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </Grid>
-        <DataGrid Background="#2B303D" ColumnWidth="*" RowHeaderWidth="0" CanUserSortColumns="False" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#23232a" IsReadOnly="True" SelectionUnit="FullRow" SelectionMode="Single" CanUserAddRows="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserDeleteRows="False" Height="500" Width="700" x:Name="dgMain" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <DataGrid Background="#2B303D" ColumnWidth="*" RowHeaderWidth="0" CanUserSortColumns="False" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#23232a" IsReadOnly="True" SelectionUnit="FullRow" SelectionMode="Single" CanUserAddRows="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserDeleteRows="False" Height="422" Width="711" x:Name="dgMain" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="81,96,70,0">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="Foreground" Value="#595A62"/>
@@ -425,13 +425,14 @@
                 </Style>
             </DataGrid.CellStyle>
             <DataGrid.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" 
-                   Color="#e74c3c"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#e74c3c"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#e74c3c"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="White"/>
             </DataGrid.Resources>
             <DataGrid.Style>
                 <Style TargetType="{x:Type DataGrid}">
                     <Setter Property="RowBackground" Value="#2B303D"/>
-                    <Setter Property="Foreground" Value="#bdc3c7"/>
+                    <Setter Property="Foreground" Value="White"/>
                     <Setter Property="BorderBrush" Value="#413E4A"/>
                 </Style>
             </DataGrid.Style>
