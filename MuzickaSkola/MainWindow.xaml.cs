@@ -125,66 +125,88 @@ namespace MuzickaSkola
         {
             for (int i = 0; i < VisualTreeHelper.GetChildrenCount(this.spSideNav); i++) // usao u sidenav
             {
-                    DependencyObject current = VisualTreeHelper.GetChild(this.spSideNav, this.currentlyActive + 1);
-                    if (current.GetType().Equals(typeof(Button)))
+                DependencyObject current = VisualTreeHelper.GetChild(this.spSideNav, this.currentlyActive + 1);
+                if (current.GetType().Equals(typeof(Button)))
+                {
+                    Button btn = (Button)current;
+                    btn.Background = Brushes.DarkBlue;
+                    for (int j = 0; j < VisualTreeHelper.GetChildrenCount(current); j++) // usao u dugme 
                     {
-                        Button btn = (Button)current;
-                        btn.Background = Brushes.DarkBlue;
-                        for (int j = 0; j < VisualTreeHelper.GetChildrenCount(current); j++) // usao u dugme 
+                        current = VisualTreeHelper.GetChild(current, j);
+                        if (current.GetType().Equals(typeof(Border)))
                         {
-                            current = VisualTreeHelper.GetChild(current, j);
-                            if (current.GetType().Equals(typeof(Border)))
+                            for (int k = 0; k < VisualTreeHelper.GetChildrenCount(current); k++) // usao u border
                             {
-                                for (int k = 0; k < VisualTreeHelper.GetChildrenCount(current); k++) // usao u border
+                                current = VisualTreeHelper.GetChild(current, k);
+                                Border b = (Border)current;
+                                switch (this.currentlyActive)
                                 {
-
-                                    current = VisualTreeHelper.GetChild(current, k);
-                                    Border b = (Border)current;
-                                    b.Background = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#00BAC0")); // pozadina dugmeta
-                                    current = VisualTreeHelper.GetChild(current, 0);
-                                    Image img = (Image)current;
-                                    if (this.currentlyActive == 0) // pocetna
-                                    {
-                                        img.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/icons8_Heating_Room_50px.png"));
-                                    }
-                                    else if (this.currentlyActive == 1)
-                                    {
-                                        img.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/icons8_Graduation_Cap_48px_1.png"));
-                                    }
-                                    else if (this.currentlyActive == 2)
-                                    {
-                                        img.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/icons8_Training_50px_1.png"));
-                                    }
-                                    else if (this.currentlyActive == 3)
-                                    {
-                                        img.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/icons8_Drums_50px_1.png"));
-                                    }
-                                    else if (this.currentlyActive == 4)
-                                    {
-                                        img.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/icons8_User_Typing_Using_Typewriter_64px.png"));
-                                    }
-                                    else if (this.currentlyActive == 5)
-                                    {
-                                        img.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/icons8_Test_Passed_50px_2.png"));
-                                    }
-                                    else if (this.currentlyActive == 6)
-                                    {
-                                        img.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/icons8_Questionnaire_48px_1.png"));
-                                    }
-
-                                    this.setInactive(this.previouslyActive);
-
-                                    return;
+                                    case 0:
+                                        b.Background = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#2ecc71")); // zelen
+                                        break;
+                                    case 1:
+                                        b.Background = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#f1c40f")); // zut
+                                        break;
+                                    case 2:
+                                        b.Background = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#e74c3c")); // crven
+                                        break;
+                                    case 3:
+                                        b.Background = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#3498db")); // plav
+                                        break;
+                                    case 4:
+                                        b.Background = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#2ecc71")); // zelen
+                                        break;
+                                    case 5:
+                                        b.Background = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#f1c40f")); // zut
+                                        break;
+                                    case 6:
+                                        b.Background = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#e74c3c")); // crven
+                                        break;
                                 }
-                            }
-                            else if (current.GetType().Equals(typeof(DockPanel)))
-                            {
-                                DockPanel dp = (DockPanel)current;
-                                dp.Background = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#242631"));
-                            }
 
+                                current = VisualTreeHelper.GetChild(current, 0);
+                                Image img = (Image)current;
+                                switch (this.currentlyActive)
+                                {
+                                    case 0:
+                                        img.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/icons8_Heating_Room_50px.png"));
+                                        break;
+                                    case 1:
+                                        img.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/icons8_Graduation_Cap_48px_1.png"));
+                                        break;
+                                    case 2:
+                                        img.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/icons8_Training_50px_1.png"));
+                                        break;
+                                    case 3:
+                                        img.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/icons8_Drums_50px_1.png"));
+                                        break;
+                                    case 4:
+                                        img.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/icons8_User_Typing_Using_Typewriter_64px.png"));
+                                        break;
+                                    case 5:
+                                        img.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/icons8_Test_Passed_50px_2.png"));
+                                        break;
+                                    case 6:
+                                        img.Source = new BitmapImage(new Uri(@"pack://application:,,,/Images/icons8_Questionnaire_48px_1.png"));
+                                        break;
+                                }
+
+                                if (!(this.currentlyActive == this.previouslyActive))
+                                {
+                                    this.setInactive(this.previouslyActive);
+                                }
+
+                                return;
+                            }
                         }
-                    
+                        else if (current.GetType().Equals(typeof(DockPanel)))
+                        {
+                            DockPanel dp = (DockPanel)current;
+                            dp.Background = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#242631"));
+                        }
+
+                    }
+
                 }
             }
         }
@@ -248,6 +270,11 @@ namespace MuzickaSkola
             this.previouslyActive = this.currentlyActive;
             this.currentlyActive = 6;
             setActive();
+        }
+
+        private void btnRNRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

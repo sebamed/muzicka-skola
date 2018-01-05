@@ -81,7 +81,7 @@
                                 <Label x:Name="aaa" Content="Pocetna" Foreground="Gray" FontSize="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Margin="19,0,0,0"/>
                             </Border>
                             <Border Padding="10" HorizontalAlignment="Right">
-                                <Border Padding="9" Background="#00BAC0">
+                                <Border Padding="9" Background="#2ecc71">
                                     <Image x:Name="icons8_Heating_Room_50px_png" Height="25" Source="Images/icons8_Heating_Room_50px.png" Stretch="Fill" Width="25"/>
                                 </Border>
                             </Border>
@@ -278,6 +278,114 @@
                                 </Style>
                             </Image.Style>
                         </Image>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button x:Name="btnRNAdd" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,176,0,314">
+            <Button.ToolTip>
+                <TextBlock>
+                <Run>Dodaj</Run>
+                </TextBlock>
+            </Button.ToolTip>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Padding="10">
+                        <Border.Style>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="Width" Value="50"/>
+                                <Setter Property="Background" Value="#242631"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Width" Value="70"/>
+                                        <Setter Property="Background" Value="#2ecc71"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Image Height="25" Source="Images/icons8_Plus_52px.png" Width="25"/>
+                    </Border>
+
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button x:Name="btnRNEdit" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,221,0,269">
+            <Button.ToolTip>
+                <TextBlock>
+                <Run>Izmeni</Run>
+                </TextBlock>
+            </Button.ToolTip>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Padding="10">
+                        
+                        <Border.Style>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="Width" Value="50"/>
+                                <Setter Property="Background" Value="#242631"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Width" Value="70"/>
+                                        <Setter Property="Background" Value="#f1c40f"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Image Height="25" Source="Images/icons8_Edit_64px.png" Width="25"/>
+                    </Border>
+
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button x:Name="btnRNRemove" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,266,0,224">
+            <Button.ToolTip>
+                <TextBlock>
+                <Run>Izbrisi</Run>
+                </TextBlock>
+            </Button.ToolTip>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Padding="10">
+                        <Border.Style>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="Width" Value="50"/>
+                                <Setter Property="Background" Value="#242631"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Width" Value="70"/>
+                                        <Setter Property="Background" Value="#e74c3c"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Image Height="25" Source="Images/icons8_Remove_50px.png" Width="25"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button x:Name="btnRNRefresh" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,311,0,179">
+            <Button.ToolTip>
+                <TextBlock>
+                <Run>Refresuj</Run>
+                </TextBlock>
+            </Button.ToolTip>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Padding="10">
+                        <Border.Style>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="Width" Value="50"/>
+                                <Setter Property="Background" Value="#242631"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Width" Value="70"/>
+                                        <Setter Property="Background" Value="#3498db"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Image Height="25" Source="Images/icons8_Refresh_52px.png" Width="25"/>
                     </Border>
                 </ControlTemplate>
             </Button.Template>

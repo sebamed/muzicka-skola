@@ -168,5 +168,17 @@
   <ItemGroup>
     <Resource Include="Images\icons8_Questionnaire_48px_1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8_Plus_52px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8_Edit_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8_Remove_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8_Refresh_52px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
