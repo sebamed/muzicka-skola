@@ -17,9 +17,12 @@
             <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-150,0,0,0" AccelerationRatio=".7" Duration="0:0:1" />
         </Storyboard>
     </Window.Resources>
-    <Grid x:Name="gridMain" Background="#ffffff">
+    <Grid x:Name="gridMain" Background="#282830">
 
-        <StackPanel x:Name="spSideNav" Margin="-150,0,0,0" Background="#2B303D" HorizontalAlignment="Left" Width="215">
+        <StackPanel Panel.ZIndex="999" x:Name="spSideNav" Margin="-150,0,0,0" Background="#2B303D" HorizontalAlignment="Left" Width="215">
+            <StackPanel.Effect>
+                <DropShadowEffect BlurRadius="10" Direction="90"/>
+            </StackPanel.Effect>
             <!-- LOGO -->
             <DockPanel Background="#242631" Width="215">
                 <DockPanel.Style>
@@ -282,8 +285,11 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-
-        <Button x:Name="btnRNAdd" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,176,0,314">
+        <Grid Width="70" HorizontalAlignment="Right">
+            <Grid.Effect>
+                <DropShadowEffect Direction="180" BlurRadius="10" ShadowDepth="3" Opacity="0.7"/>
+            </Grid.Effect>
+            <Button x:Name="btnRNAdd" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,176,0,314">
             <Button.ToolTip>
                 <TextBlock>
                 <Run>Dodaj</Run>
@@ -296,7 +302,7 @@
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="Width" Value="50"/>
                                 <Setter Property="Background" Value="#242631"/>
-                                <Style.Triggers>
+                                    <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
                                         <Setter Property="Width" Value="70"/>
                                         <Setter Property="Background" Value="#2ecc71"/>
@@ -364,7 +370,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="btnRNRefresh" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,311,0,179">
+        <Button x:Name="btnRNRefresh" Click="btnRNRefresh_Click" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,311,0,179">
             <Button.ToolTip>
                 <TextBlock>
                 <Run>Refresuj</Run>
@@ -390,5 +396,43 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
+        </Grid>
+        <DataGrid Background="#2B303D" RowHeaderWidth="0" CanUserSortColumns="False" HorizontalContentAlignment="Center" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#23232a" IsReadOnly="True" SelectionUnit="FullRow" SelectionMode="Single" CanUserAddRows="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserDeleteRows="False" Height="500" Width="700" x:Name="dgMain" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Foreground" Value="#595A62"/>
+                    <Setter Property="Background" Value="#242631"/>
+                    <Setter Property="BorderBrush" Value="#373442"/>
+                    <Setter Property="Padding" Value="20 10"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="Padding" Value="20 10"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                <Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                    <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" 
+                   Color="#e74c3c"/>
+            </DataGrid.Resources>
+            <DataGrid.Style>
+                <Style TargetType="{x:Type DataGrid}">
+                    <Setter Property="RowBackground" Value="#2B303D"/>
+                    <Setter Property="Foreground" Value="#ffffff"/>
+                    <Setter Property="BorderBrush" Value="#413E4A"/>
+                </Style>
+            </DataGrid.Style>
+        </DataGrid>
     </Grid>
 </Window>

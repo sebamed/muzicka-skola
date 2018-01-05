@@ -12,6 +12,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace MuzickaSkola
 {
@@ -21,6 +23,10 @@ namespace MuzickaSkola
     public partial class MainWindow : Window
     {
 
+        private SqlConnection conn = Connection.getConnection();
+
+        private string query = "";
+
         private bool SidebarOpened = false;
         private int currentlyActive = 0;
         private int previouslyActive = 0;
@@ -29,6 +35,7 @@ namespace MuzickaSkola
         {       
             InitializeComponent();
             this.setCrudMenuVisible(false);
+            this.dgMain.Visibility = Visibility.Hidden;
         }
 
         private void btnCollapseMenu_Click(object sender, RoutedEventArgs e)
@@ -233,6 +240,9 @@ namespace MuzickaSkola
 
             // CRUD meni
             this.setCrudMenuVisible(false);
+
+            // tabela
+            this.dgMain.Visibility = Visibility.Hidden;
         }
 
         private void btnSNUcenik_Click(object sender, RoutedEventArgs e)
@@ -244,6 +254,11 @@ namespace MuzickaSkola
 
             // CRUD meni
             this.setCrudMenuVisible(true);
+
+            // tabela
+            this.setDataGridModel();
+
+
         }    
 
         private void btnSNProfesor_Click(object sender, RoutedEventArgs e)
@@ -255,6 +270,10 @@ namespace MuzickaSkola
 
             // CRUD meni
             this.setCrudMenuVisible(true);
+
+            // tabela
+            this.setDataGridModel();
+
         }
 
         private void btnSNInstrument_Click(object sender, RoutedEventArgs e)
@@ -266,6 +285,7 @@ namespace MuzickaSkola
 
             // CRUD meni
             this.setCrudMenuVisible(true);
+
         }
 
         private void btnSNIspitanik_Click(object sender, RoutedEventArgs e)
@@ -303,7 +323,11 @@ namespace MuzickaSkola
 
         private void btnRNRefresh_Click(object sender, RoutedEventArgs e)
         {
-            
+            this.conn.Open();
+            this.query = "insert into test(a) values(1)";
+            SqlCommand cmd = new SqlCommand(this.query, this.conn);
+            cmd.ExecuteNonQuery();
+            this.conn.Close();
         }
 
         private void setCrudMenuVisible(bool enabled)
@@ -322,7 +346,40 @@ namespace MuzickaSkola
                 this.btnRNEdit.Visibility = Visibility.Hidden;
                 this.btnRNRemove.Visibility = Visibility.Hidden;
                 this.btnRNRefresh.Visibility = Visibility.Hidden;
+            }  
+        }
+
+        private void setDataGridModel()
+        {
+            switch (this.currentlyActive)
+            {
+                case 1:  this.query = @"select UcenikID as 'ID', UcenikIme as 'IME', UcenikPrezime as 'PREZIME', UcenikJMBG as 'JMBG', UcenikDatumRodjenja as 'DATUM RODJENJA', ProfesorIme + ProfesorPrezime as 'PROFESOR'
+                            from tblUcenik inner join tblProfesor on tblUcenik.ProfesorID = tblProfesor.ProfesorID";
+                        break;
+                case 2: this.query = @"select ProfesorID as 'ID', ProfesorIme as 'IME', ProfesorPrezime as 'PREZIME', InstrumentNaziv as 'INSTRUMENT'  
+                            from tblProfesor inner join tblInstrument on tblProfesor.InstrumentID = tblInstrument.InstrumentID";
+                        break;
+            }
+
+            try
+            {
+                this.conn.Open();
+                SqlDataAdapter sqlDA = new SqlDataAdapter(this.query, this.conn);
+
+                DataTable dt = new DataTable("Test");
+                sqlDA.Fill(dt);
+                this.dgMain.ItemsSource = dt.DefaultView;
+                this.dgMain.Visibility = Visibility.Visible;
+            } catch(Exception e)
+            {
+                MessageBox.Show("Error with connection!", "Error!", MessageBoxButton.OK);
+            }
+            finally
+            {
+                this.conn.Close();
             }
         }
+
+
     }
 }
