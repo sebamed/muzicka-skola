@@ -420,8 +420,18 @@ namespace MuzickaSkola
 
         private void btnRNAdd_Click(object sender, RoutedEventArgs e)
         {
-            Add addNew = new Add();
-            addNew.ShowDialog();
+            this.chooseToAdd();
+        }
+
+        private void chooseToAdd()
+        {
+            switch (this.currentlyActive)
+            {
+                case 1: // otvori dodaj ucenika
+                    Add addNew = new Add();
+                    addNew.ShowDialog();
+                    break;
+            }
         }
 
         private void deleteFromDb(object sender, RoutedEventArgs e)
