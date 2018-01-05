@@ -291,6 +291,8 @@ namespace MuzickaSkola
 
             // CRUD meni
             this.setCrudMenuVisible(true);
+
+            // tabela
             this.setDataGridModel();
 
         }
@@ -304,6 +306,9 @@ namespace MuzickaSkola
 
             // CRUD meni
             this.setCrudMenuVisible(true);
+
+            // tabela
+            this.setDataGridModel();
         }
 
         private void btnSNIspit_Click(object sender, RoutedEventArgs e)
@@ -315,6 +320,9 @@ namespace MuzickaSkola
 
             // CRUD meni
             this.setCrudMenuVisible(true);
+
+            // tabela
+            this.setDataGridModel();
         }
 
         private void btnSNPitanja_Click(object sender, RoutedEventArgs e)
@@ -326,15 +334,14 @@ namespace MuzickaSkola
 
             // CRUD meni
             this.setCrudMenuVisible(true);
+
+            // tabela
+            this.setDataGridModel();
         }
 
         private void btnRNRefresh_Click(object sender, RoutedEventArgs e)
         {
-            this.conn.Open();
-            this.query = "insert into test(a) values(1)";
-            SqlCommand cmd = new SqlCommand(this.query, this.conn);
-            cmd.ExecuteNonQuery();
-            this.conn.Close();
+            this.setDataGridModel();
         }
 
         private void setCrudMenuVisible(bool enabled)
@@ -366,7 +373,21 @@ namespace MuzickaSkola
                 case 2: this.query = @"select ProfesorID as 'ID', ProfesorIme as 'IME', ProfesorPrezime as 'PREZIME', InstrumentNaziv as 'INSTRUMENT'  
                             from tblProfesor inner join tblInstrument on tblProfesor.InstrumentID = tblInstrument.InstrumentID";
                         break;
-                case 3: this.query = @"select InstrumentID as 'ID', InstrumentNaziv as 'Instrument' from tblInstrument";
+                case 3: this.query = @"select InstrumentID as 'ID', InstrumentNaziv as 'INSTRUMENT' from tblInstrument";
+                        break;
+                case 4: this.query = @"select IspitanikID as 'ID', IspitanikIme as 'IME', IspitanikPrezime as 'PREZIME', Username as 'USERNAME', Password as 'PASSWORD' from tblIspitanik";
+                        break;
+                case 5: this.query = @"select IspitID as 'ID',
+                                    UcenikIme + UcenikPrezime as 'UCENIK', 
+                                    IspitanikIme + IspitanikPrezime as 'ISPITANIK',
+                                    PitanjeNaslov as 'PITANJE',
+                                    IspitOsvojenihBodova as 'BODOVI',
+                                    IspitPolozen as 'POLOZEN'
+                                    from tblIspit inner join tblUcenik on tblIspit.UcenikID = tblUcenik.UcenikID
+                                    inner join tblIspitanik on tblIspit.IspitanikID = tblIspitanik.IspitanikID
+                                    inner join tblPitanje on tblIspit.PitanjeID = tblPitanje.PitanjeID";
+                        break;
+                case 6: this.query = @"select PitanjeID as 'ID', PitanjeNaslov as 'NASLOV', PitanjeText as 'PITANJE', PitanjeTacanOdgovor as 'TACAN ODGOVOR' from tblPitanje";
                         break;
             }
 
@@ -381,7 +402,7 @@ namespace MuzickaSkola
                 this.dgMain.Visibility = Visibility.Visible;
             } catch(Exception e)
             {
-                MessageBox.Show("Error with connection!", "Error!", MessageBoxButton.OK);
+                MessageBox.Show("Error with connection or query!", "Error!", MessageBoxButton.OK);
             }
             finally
             {

@@ -431,7 +431,7 @@
             <DataGrid.Style>
                 <Style TargetType="{x:Type DataGrid}">
                     <Setter Property="RowBackground" Value="#2B303D"/>
-                    <Setter Property="Foreground" Value="#ffffff"/>
+                    <Setter Property="Foreground" Value="#bdc3c7"/>
                     <Setter Property="BorderBrush" Value="#413E4A"/>
                 </Style>
             </DataGrid.Style>
