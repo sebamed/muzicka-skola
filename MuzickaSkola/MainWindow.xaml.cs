@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using System.Data.SqlClient;
 using System.Data;
+using System.Windows.Media.Effects;
 
 namespace MuzickaSkola
 {
@@ -22,6 +23,7 @@ namespace MuzickaSkola
     /// </summary>
     public partial class MainWindow : Window
     {
+        BlurEffect blurEffect = new BlurEffect();
 
         private SqlConnection conn = Connection.getConnection();
 
@@ -34,8 +36,11 @@ namespace MuzickaSkola
         public MainWindow()
         {       
             InitializeComponent();
-            this.setCrudMenuVisible(false);
+            this.setCrudMenuVisible(false);          
             this.dgMain.Visibility = Visibility.Hidden;
+
+            this.RegisterName("blurEffect", blurEffect);           
+
         }
 
         private void btnCollapseMenu_Click(object sender, RoutedEventArgs e)
@@ -43,9 +48,12 @@ namespace MuzickaSkola
             if (this.SidebarOpened)
             {
                 ShowHideMenu("sbHideSidenav", this.spSideNav);
+                this.dgMain.Effect = null;
             } else
             {
                 ShowHideMenu("sbShowSidenav", this.spSideNav);
+                this.blurEffect.Radius = 5;
+                this.dgMain.Effect = this.blurEffect;
             }
         }
 
@@ -199,7 +207,7 @@ namespace MuzickaSkola
                                         break;
                                 }
 
-                                if (!(this.currentlyActive == this.previouslyActive))
+                                if (!this.isSame())
                                 {
                                     this.setInactive(this.previouslyActive);
                                 }
@@ -257,8 +265,6 @@ namespace MuzickaSkola
 
             // tabela
             this.setDataGridModel();
-
-
         }    
 
         private void btnSNProfesor_Click(object sender, RoutedEventArgs e)
@@ -285,6 +291,7 @@ namespace MuzickaSkola
 
             // CRUD meni
             this.setCrudMenuVisible(true);
+            this.setDataGridModel();
 
         }
 
@@ -358,6 +365,8 @@ namespace MuzickaSkola
                         break;
                 case 2: this.query = @"select ProfesorID as 'ID', ProfesorIme as 'IME', ProfesorPrezime as 'PREZIME', InstrumentNaziv as 'INSTRUMENT'  
                             from tblProfesor inner join tblInstrument on tblProfesor.InstrumentID = tblInstrument.InstrumentID";
+                        break;
+                case 3: this.query = @"select InstrumentID as 'ID', InstrumentNaziv as 'Instrument' from tblInstrument";
                         break;
             }
 
