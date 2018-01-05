@@ -28,6 +28,7 @@ namespace MuzickaSkola
         public MainWindow()
         {       
             InitializeComponent();
+            this.setCrudMenuVisible(false);
         }
 
         private void btnCollapseMenu_Click(object sender, RoutedEventArgs e)
@@ -225,56 +226,103 @@ namespace MuzickaSkola
 
         private void btnSNPocetna_Click(object sender, RoutedEventArgs e)
         {
+            // Glavni meni
             this.previouslyActive = this.currentlyActive;
             this.currentlyActive = 0;
             setActive();
+
+            // CRUD meni
+            this.setCrudMenuVisible(false);
         }
 
         private void btnSNUcenik_Click(object sender, RoutedEventArgs e)
         {
+            // Glavni meni
             this.previouslyActive = this.currentlyActive;
             this.currentlyActive = 1;
             setActive();
+
+            // CRUD meni
+            this.setCrudMenuVisible(true);
         }    
 
         private void btnSNProfesor_Click(object sender, RoutedEventArgs e)
         {
+            // Glavni meni
             this.previouslyActive = this.currentlyActive;
             this.currentlyActive = 2;
             setActive();
+
+            // CRUD meni
+            this.setCrudMenuVisible(true);
         }
 
         private void btnSNInstrument_Click(object sender, RoutedEventArgs e)
         {
+            // Glavni meni
             this.previouslyActive = this.currentlyActive;
             this.currentlyActive = 3;
             setActive();
+
+            // CRUD meni
+            this.setCrudMenuVisible(true);
         }
 
         private void btnSNIspitanik_Click(object sender, RoutedEventArgs e)
         {
+            // Glavni meni
             this.previouslyActive = this.currentlyActive;
             this.currentlyActive = 4;
             setActive();
+
+            // CRUD meni
+            this.setCrudMenuVisible(true);
         }
 
         private void btnSNIspit_Click(object sender, RoutedEventArgs e)
         {
+            // Glavni meni
             this.previouslyActive = this.currentlyActive;
             this.currentlyActive = 5;
             setActive();
+
+            // CRUD meni
+            this.setCrudMenuVisible(true);
         }
 
         private void btnSNPitanja_Click(object sender, RoutedEventArgs e)
         {
+            // Glavni meni
             this.previouslyActive = this.currentlyActive;
             this.currentlyActive = 6;
             setActive();
+
+            // CRUD meni
+            this.setCrudMenuVisible(true);
         }
 
         private void btnRNRefresh_Click(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void setCrudMenuVisible(bool enabled)
+        {
+            if (enabled) // vidljivi
+            {
+                this.btnRNAdd.Visibility = Visibility.Visible;
+                this.btnRNEdit.Visibility = Visibility.Visible;
+                this.btnRNRemove.Visibility = Visibility.Visible;
+                this.btnRNRefresh.Visibility = Visibility.Visible;
+
+            }
+            else
+            {
+                this.btnRNAdd.Visibility = Visibility.Hidden;
+                this.btnRNEdit.Visibility = Visibility.Hidden;
+                this.btnRNRemove.Visibility = Visibility.Hidden;
+                this.btnRNRefresh.Visibility = Visibility.Hidden;
+            }
         }
     }
 }
