@@ -1,5 +1,5 @@
 # Preview
-[gif](https://github.com/sebamed/muzicka-skola/blob/master/MuzickaSkola/Video/preview.gif)
+[Application preview gif](https://github.com/sebamed/muzicka-skola/blob/master/MuzickaSkola/Video/preview.gif)
 
 # Soon more documentation
 
