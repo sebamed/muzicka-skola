@@ -46,7 +46,57 @@ namespace MuzickaSkola
 
             this.RegisterName("blurEffect", blurEffect);
 
+            this.fillInHomeInfo();
+        }
 
+        private void fillInHomeInfo()
+        {
+            try
+            {
+                this.conn.Open();
+
+                this.query = "select count(UcenikID) from tblUcenik";
+
+                // broj ucenika
+                SqlCommand cmd = new SqlCommand(this.query, this.conn);
+                Int32 countUcenika = (Int32)cmd.ExecuteScalar();
+
+                // broj profesora
+                cmd.CommandText = "select count(ProfesorID) from tblProfesor";
+                Int32 countProfesora = (Int32)cmd.ExecuteScalar();
+
+                // broj instrumenata
+                cmd.CommandText = "select count(InstrumentID) from tblInstrument";
+                Int32 countInstrumenata = (Int32)cmd.ExecuteScalar();
+
+                // broj ispita
+                cmd.CommandText = "select count(IspitID) from tblIspit";
+                Int32 countIspita = (Int32)cmd.ExecuteScalar();
+
+                // broj polozenih ispita
+                cmd.CommandText = "select count(IspitID) from tblIspit where IspitPolozen > 0";
+                Int32 countPolozenih = (Int32)cmd.ExecuteScalar();
+
+                // broj ispitanika
+                cmd.CommandText = "select count(IspitanikID) from tblIspitanik";
+                Int32 countnIspitanika = (Int32)cmd.ExecuteScalar();
+
+                // setovanje labelova
+                this.lblUcenika.Content = countUcenika + "";
+                this.lblProfesora.Content = countProfesora + "";
+                this.lblInstrumenata.Content = "uz " + countInstrumenata;
+                this.lblIspita.Content = countIspita + "";
+                this.lblPolozenihIspita.Content = countPolozenih + " polozenih";
+                this.lblIspitanika.Content = countnIspitanika;
+            }
+            catch (SqlException)
+            {
+
+            }
+            finally
+            {
+                this.conn.Close();
+            }
         }
 
         private void btnCollapseMenu_Click(object sender, RoutedEventArgs e)
@@ -248,6 +298,14 @@ namespace MuzickaSkola
             }
         }
 
+        private void setHomeScreenVisible()
+        {
+            if(this.grdHome.Visibility == Visibility.Visible)
+            {
+                this.grdHome.Visibility = Visibility.Hidden;
+            }
+        }
+
         private void btnSNPocetna_Click(object sender, RoutedEventArgs e)
         {
             // Glavni meni
@@ -260,10 +318,14 @@ namespace MuzickaSkola
 
             // tabela
             this.dgMain.Visibility = Visibility.Hidden;
+
+            this.grdHome.Visibility = Visibility.Visible;
+            this.fillInHomeInfo();
         }
 
         private void btnSNUcenik_Click(object sender, RoutedEventArgs e)
         {
+            this.setHomeScreenVisible();
             // Glavni meni
             this.previouslyActive = this.currentlyActive;
             this.currentlyActive = 1;
@@ -279,6 +341,7 @@ namespace MuzickaSkola
 
         private void btnSNProfesor_Click(object sender, RoutedEventArgs e)
         {
+            this.setHomeScreenVisible();
             // Glavni meni
             this.previouslyActive = this.currentlyActive;
             this.currentlyActive = 2;
@@ -295,6 +358,7 @@ namespace MuzickaSkola
 
         private void btnSNInstrument_Click(object sender, RoutedEventArgs e)
         {
+            this.setHomeScreenVisible();
             // Glavni meni
             this.previouslyActive = this.currentlyActive;
             this.currentlyActive = 3;
@@ -311,6 +375,7 @@ namespace MuzickaSkola
 
         private void btnSNIspitanik_Click(object sender, RoutedEventArgs e)
         {
+            this.setHomeScreenVisible();
             // Glavni meni
             this.previouslyActive = this.currentlyActive;
             this.currentlyActive = 4;
@@ -326,6 +391,7 @@ namespace MuzickaSkola
 
         private void btnSNIspit_Click(object sender, RoutedEventArgs e)
         {
+            this.setHomeScreenVisible();
             // Glavni meni
             this.previouslyActive = this.currentlyActive;
             this.currentlyActive = 5;
@@ -341,6 +407,7 @@ namespace MuzickaSkola
 
         private void btnSNPitanja_Click(object sender, RoutedEventArgs e)
         {
+            this.setHomeScreenVisible();
             // Glavni meni
             this.previouslyActive = this.currentlyActive;
             this.currentlyActive = 6;
