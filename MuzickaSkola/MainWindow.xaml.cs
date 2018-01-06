@@ -614,6 +614,7 @@ namespace MuzickaSkola
             {
                 edit = true;
                 Add dodajUcenika = new Add();
+                dodajUcenika.lblTitle.Content = "IZMENI UCENIKA";
 
                 this.conn.Open();
                 DataRowView row = (DataRowView)this.dgMain.SelectedItems[0];
@@ -653,6 +654,7 @@ namespace MuzickaSkola
             {
                 edit = true;
                 DodajProfesora dodajProfesora = new DodajProfesora();
+                dodajProfesora.lblTitle.Content = "IZMENI PROFESORA";
 
                 this.conn.Open();
                 DataRowView row = (DataRowView)this.dgMain.SelectedItems[0];
@@ -691,6 +693,7 @@ namespace MuzickaSkola
             {
                 edit = true;
                 DodajInstrument dodajInstrument = new DodajInstrument();
+                dodajInstrument.lblTitle.Content = "IZMENI INSTRUMENT";
 
                 this.conn.Open();
                 DataRowView row = (DataRowView)this.dgMain.SelectedItems[0];
@@ -727,6 +730,7 @@ namespace MuzickaSkola
             {
                 edit = true;
                 DodajIspitanika dodajIspitanika = new DodajIspitanika();
+                dodajIspitanika.lblTitle.Content = "IZMENI ISPITANIKA";
 
                 this.conn.Open();
                 DataRowView row = (DataRowView)this.dgMain.SelectedItems[0];
@@ -766,6 +770,7 @@ namespace MuzickaSkola
             {
                 edit = true;
                 DodajIspit dodajIspit = new DodajIspit();
+                dodajIspit.lblTitle.Content = "IZMENI ISPIT";
 
                 this.conn.Open();
                 DataRowView row = (DataRowView)this.dgMain.SelectedItems[0];
@@ -805,6 +810,7 @@ namespace MuzickaSkola
             {
                 edit = true;
                 DodajPitanje dodajPitanje = new DodajPitanje();
+                dodajPitanje.lblTitle.Content = "IZMENI PITANJE";
 
                 this.conn.Open();
                 DataRowView row = (DataRowView)this.dgMain.SelectedItems[0];

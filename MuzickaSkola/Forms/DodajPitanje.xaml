@@ -34,7 +34,7 @@
 
         </Border>
 
-        <Label Content="DODAJ PITANJE" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" VerticalContentAlignment="Center" FontSize="16" Foreground="White" FontWeight="Bold" Margin="10,0,0,0"/>
+        <Label x:Name="lblTitle" Content="DODAJ PITANJE" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" VerticalContentAlignment="Center" FontSize="16" Foreground="White" FontWeight="Bold" Margin="10,0,0,0"/>
 
         <Image UseLayoutRounding="True" SnapsToDevicePixels="True" Height="52" Source="../Images/icons8_Questionnaire_48px_1.png" Stretch="Fill" Width="52" HorizontalAlignment="Center" Margin="144,60,144,337">
             <Image.Effect>
