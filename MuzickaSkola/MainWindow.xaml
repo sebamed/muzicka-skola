@@ -397,7 +397,7 @@
                 </Button.Template>
             </Button>
         </Grid>
-        <DataGrid Background="#2B303D" ColumnWidth="*" RowHeaderWidth="0" CanUserSortColumns="False" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#23232a" IsReadOnly="True" SelectionUnit="FullRow" SelectionMode="Single" CanUserAddRows="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserDeleteRows="False" Height="422" Width="711" x:Name="dgMain" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="81,96,70,0">
+        <DataGrid Background="#2B303D" ColumnWidth="*" RowHeaderWidth="0" CanUserSortColumns="False" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#23232a" IsReadOnly="True" SelectionUnit="FullRow" SelectionMode="Single" CanUserAddRows="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserDeleteRows="False" Height="422" Width="711" x:Name="dgMain" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="81,96,70,0" Visibility="Hidden">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="Foreground" Value="#595A62"/>

@@ -33,7 +33,7 @@ namespace MuzickaSkola.Forms
             {
                 this.conn.Open();
 
-                this.query = @"select ProfesorID, ProfesorIme + ProfesorPrezime + InstrumentNaziv as 'Profesor' from tblProfesor inner join tblInstrument on tblProfesor.InstrumentID = tblInstrument.InstrumentID";
+                this.query = @"select ProfesorID, ProfesorIme + ' ' + ProfesorPrezime + ' | ' + InstrumentNaziv as 'Profesor' from tblProfesor inner join tblInstrument on tblProfesor.InstrumentID = tblInstrument.InstrumentID";
                 DataTable dtProfesori = new DataTable();
                 SqlDataAdapter daProfesori = new SqlDataAdapter(this.query, this.conn);
                 daProfesori.Fill(dtProfesori);
