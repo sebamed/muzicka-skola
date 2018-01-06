@@ -408,9 +408,9 @@ namespace MuzickaSkola
                 sqlDA.Fill(dt);
                 this.dgMain.ItemsSource = dt.DefaultView;
                 this.dgMain.Visibility = Visibility.Visible;
-            } catch (Exception e)
+            } catch (Exception)
             {
-                MessageBox.Show("Error with connection or query!", "Error!", MessageBoxButton.OK);
+                MessageBox.Show("Error with connection or query!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {
@@ -421,17 +421,35 @@ namespace MuzickaSkola
         private void btnRNAdd_Click(object sender, RoutedEventArgs e)
         {
             this.chooseToAdd();
+            this.btnRNRefresh_Click(sender, e);
+            this.dgMain.SelectedIndex = this.dgMain.Items.Count - 1;
+            this.dgMain.ScrollIntoView(this.dgMain.SelectedItem);
         }
 
         private void chooseToAdd()
         {
+            this.blurEffect.Radius = 5;
+            this.Effect = this.blurEffect;
             switch (this.currentlyActive)
             {
                 case 1: // otvori dodaj ucenika
                     Add addNew = new Add();
-                    addNew.ShowDialog();
+                    addNew.ShowDialog();          
+                    break;
+                case 2: // otvori dodaj profesora
+                    DodajProfesora dodajProfesora = new DodajProfesora();
+                    dodajProfesora.ShowDialog();
+                    break;
+                case 3: // otvori dodaj instrument
+                    DodajInstrument dodajInstrument = new DodajInstrument();
+                    dodajInstrument.ShowDialog();
+                    break;
+                case 5: // otvori dodaj ispit
+                    DodajIspit dodajIspit = new DodajIspit();
+                    dodajIspit.ShowDialog();
                     break;
             }
+            this.Effect = null;
         }
 
         private void deleteFromDb(object sender, RoutedEventArgs e)
@@ -477,7 +495,7 @@ namespace MuzickaSkola
                         break;
                 }
 
-                MessageBoxResult res = MessageBox.Show("Da li ste sigurni da zelite da obrisete " + type + " '" + row[rowType] + "'?", "Upozorenje!", MessageBoxButton.YesNo);
+                MessageBoxResult res = MessageBox.Show("Da li ste sigurni da zelite da obrisete " + type + " '" + row[rowType] + "'?", "Upozorenje!", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if(res == MessageBoxResult.Yes)
                 {
@@ -487,7 +505,7 @@ namespace MuzickaSkola
 
             } catch (SqlException)
             {
-                MessageBox.Show("Podaci koje brisete su povezani sa drugim tabelama!", "Error!", MessageBoxButton.OK);
+                MessageBox.Show("Podaci koje brisete su povezani sa drugim tabelama!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {

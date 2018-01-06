@@ -21,6 +21,8 @@ namespace MuzickaSkola.Forms
 
         private SqlConnection conn = Connection.getConnection();
 
+        private string query = "";
+
         public Add()
         {
             InitializeComponent();
@@ -31,16 +33,17 @@ namespace MuzickaSkola.Forms
             {
                 this.conn.Open();
 
-                string profesori = "select ProfesorID, ProfesorIme + ProfesorPrezime + InstrumentNaziv as 'Profesor' from tblProfesor inner join tblInstrument on tblProfesor.InstrumentID = tblInstrument.InstrumentID";
-                DataTable dtVozila = new DataTable();
-                SqlDataAdapter daVozila = new SqlDataAdapter(profesori, this.conn);
-                daVozila.Fill(dtVozila);
+                this.query = @"select ProfesorID, ProfesorIme + ProfesorPrezime + InstrumentNaziv as 'Profesor' from tblProfesor inner join tblInstrument on tblProfesor.InstrumentID = tblInstrument.InstrumentID";
+                DataTable dtProfesori = new DataTable();
+                SqlDataAdapter daProfesori = new SqlDataAdapter(this.query, this.conn);
+                daProfesori.Fill(dtProfesori);
 
-                this.cbProfesori.ItemsSource = dtVozila.DefaultView;
+                this.cbProfesori.ItemsSource = dtProfesori.DefaultView;
+                this.cbProfesori.SelectedIndex = 0;
             }
             catch (SqlException)
             {
-                MessageBox.Show("Error with database!");
+                MessageBox.Show("Error with database!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             } finally
             {
                 this.conn.Close();
@@ -54,7 +57,32 @@ namespace MuzickaSkola.Forms
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            if (String.IsNullOrEmpty(this.tbUcenikIme.Text) || String.IsNullOrEmpty(this.tbUcenikPrezime.Text) || String.IsNullOrEmpty(this.tbUcenikDatumRodjenja.Text) || String.IsNullOrEmpty(this.tbUcenikJMBG.Text))
+            {
+                MessageBox.Show("Morate popuniti sva polja!", "Upozorenje!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            } else
+            {
+                try
+                {
+                    this.conn.Open();
+                    this.query = @"insert into tblUcenik(UcenikIme, UcenikPrezime, UcenikDatumRodjenja, UcenikJMBG, ProfesorID) values('" + this.tbUcenikIme.Text + "', '" +
+                                                                                                                                        this.tbUcenikPrezime.Text + "', '" +
+                                                                                                                                        this.tbUcenikDatumRodjenja.Text + "', '" +
+                                                                                                                                        this.tbUcenikJMBG.Text + "', " +
+                                                                                                                                        this.cbProfesori.SelectedValue + ")";
+                    SqlCommand cmd = new SqlCommand(this.query, this.conn);
+                    cmd.ExecuteNonQuery();
+                    this.Close();
+                }
+                catch (SqlException)
+                {
+                    MessageBox.Show("Error with statement!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                finally
+                {
+                    this.conn.Close();
+                }
+            }
         }
     }
 }

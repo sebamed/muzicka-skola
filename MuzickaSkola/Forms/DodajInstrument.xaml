@@ -1,0 +1,97 @@
+﻿<Window x:Class="MuzickaSkola.Forms.DodajInstrument"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MuzickaSkola.Forms"
+        mc:Ignorable="d"
+       Title="Dodaj Instrument" WindowStyle="None" Background="#2e88c5" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Height="486" Width="340">
+    <Grid>
+        <Border Background="#3498db" VerticalAlignment="Top" Height="50">
+            <Border.Effect>
+                <DropShadowEffect Direction="-90" ShadowDepth="3" Opacity="0.3"/>
+            </Border.Effect>
+            <Button x:Name="btnClose" Click="btnClose_Click" Width="30" Height="30" Margin="300,10,10,10">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border>
+                            <Image Cursor="Hand" Height="25" Stretch="Fill" Width="25">
+                                <Image.Style>
+                                    <Style TargetType="{x:Type Image}">
+                                        <Setter Property="Source" Value="../Images/icons8_Multiply_52px_4.png"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Source" Value="../Images/icons8_Multiply_52px_2.png"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Image.Style>
+                            </Image>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+        </Border>
+
+        <Label Content="DODAJ INSTRUMENT" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" VerticalContentAlignment="Center" FontSize="16" Foreground="White" FontWeight="Bold" Margin="10,0,0,0"/>
+
+        <Image UseLayoutRounding="True" SnapsToDevicePixels="True" Height="52" Source="../Images/icons8_Drums_50px_1.png" Stretch="Fill" Width="52" HorizontalAlignment="Center" Margin="144,60,144,337">
+            <Image.Effect>
+                <DropShadowEffect ShadowDepth="2" Opacity="0.7" BlurRadius="5"/>
+            </Image.Effect>
+        </Image>
+        <TextBox x:Name="tbInstrumentNaziv" VerticalContentAlignment="Center" Width="250" Height="45" BorderBrush="#246a99" Padding="10" Margin="45,154,45,287">
+            <TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Naziv instrumenta..." Foreground="#246a99" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="#2979af" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+
+        <Button x:Name="btnAdd" Click="btnAdd_Click" Cursor="Hand" VerticalAlignment="Bottom" Height="70" BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <Button.Effect>
+                <DropShadowEffect Direction="90" ShadowDepth="3" Opacity="0.3"/>
+            </Button.Effect>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#3498db"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#2e88c5"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Image Height="52" Source="../Images/icons8_Plus_52px.png" Stretch="Fill" Width="52"/>
+        </Button>
+
+    </Grid>
+</Window>

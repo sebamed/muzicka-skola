@@ -1,13 +1,13 @@
-﻿<Window x:Name="DodajUcenika" x:Class="MuzickaSkola.Forms.Add"
+﻿<Window x:Class="MuzickaSkola.Forms.DodajProfesora"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MuzickaSkola.Forms"
         mc:Ignorable="d"
-        Title="Dodaj Ucenika" WindowStyle="None" Background="#d8b00d" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Height="486" Width="340">
+        Title="Dodaj Profesora" WindowStyle="None" Background="#cf4436" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Height="486" Width="340">
     <Grid>
-        <Border Background="#f1c40f" VerticalAlignment="Top" Height="50">
+        <Border Background="#e74c3c" VerticalAlignment="Top" Height="50">
             <Border.Effect>
                 <DropShadowEffect Direction="-90" ShadowDepth="3" Opacity="0.3"/>
             </Border.Effect>
@@ -34,20 +34,20 @@
 
         </Border>
 
-        <Label Content="DODAJ KORISNIKA" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" VerticalContentAlignment="Center" FontSize="16" Foreground="White" FontWeight="Bold" Margin="10,0,0,0"/>
+        <Label Content="DODAJ PROFESORA" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" VerticalContentAlignment="Center" FontSize="16" Foreground="White" FontWeight="Bold" Margin="10,0,0,0"/>
 
-        <Image UseLayoutRounding="True" SnapsToDevicePixels="True" Height="52" Source="../Images/icons8_Graduation_Cap_48px_1.png" Stretch="Fill" Width="52" HorizontalAlignment="Center" Margin="144,60,144,337">
+        <Image UseLayoutRounding="True" SnapsToDevicePixels="True" Height="52" Source="../Images/icons8_Training_50px_1.png" Stretch="Fill" Width="52" HorizontalAlignment="Center" Margin="144,60,144,337">
             <Image.Effect>
                 <DropShadowEffect ShadowDepth="2" Opacity="0.7" BlurRadius="5"/>
             </Image.Effect>
         </Image>
-        <TextBox x:Name="tbUcenikIme" VerticalContentAlignment="Center" Width="250" Height="45" BorderBrush="#786207" Padding="10" Margin="45,154,45,287">
+        <TextBox x:Name="tbProfesorIme" VerticalContentAlignment="Center" Width="250" Height="45" BorderBrush="#a1352a" Padding="10" Margin="45,154,45,287">
             <TextBox.Style>
                 <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                     <Style.Resources>
                         <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                             <VisualBrush.Visual>
-                                <Label Content="Ime ucenika..." Foreground="#786207" />
+                                <Label Content="Ime profesora..." Foreground="#a1352a" />
                             </VisualBrush.Visual>
                         </VisualBrush>
                     </Style.Resources>
@@ -59,20 +59,20 @@
                             <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter Property="Background" Value="#c09c0c" />
+                            <Setter Property="Background" Value="#cf4436" />
                             <Setter Property="Foreground" Value="White" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
             </TextBox.Style>
         </TextBox>
-        <TextBox x:Name="tbUcenikPrezime" VerticalContentAlignment="Center" Width="250" Height="45" BorderBrush="#786207" Padding="10" Margin="45,204,45,237">
+        <TextBox x:Name="tbProfesorPrezime" VerticalContentAlignment="Center" Width="250" Height="45" BorderBrush="#a1352a" Padding="10" Margin="45,204,45,237">
             <TextBox.Style>
                 <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                     <Style.Resources>
                         <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                             <VisualBrush.Visual>
-                                <Label Content="Prezime ucenika..." Foreground="#786207" />
+                                <Label Content="Prezime profesora..." Foreground="#a1352a" />
                             </VisualBrush.Visual>
                         </VisualBrush>
                     </Style.Resources>
@@ -84,57 +84,7 @@
                             <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter Property="Background" Value="#c09c0c" />
-                            <Setter Property="Foreground" Value="White" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBox.Style>
-        </TextBox>
-        <TextBox x:Name="tbUcenikDatumRodjenja" VerticalContentAlignment="Center" Width="250" Height="45" BorderBrush="#786207" Padding="10" Margin="45,254,45,187">
-            <TextBox.Style>
-                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                    <Style.Resources>
-                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-                            <VisualBrush.Visual>
-                                <Label Content="Datum rodjenja ucenika..." Foreground="#786207" />
-                            </VisualBrush.Visual>
-                        </VisualBrush>
-                    </Style.Resources>
-                    <Style.Triggers>
-                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                        </Trigger>
-                        <Trigger Property="Text" Value="{x:Null}">
-                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                        </Trigger>
-                        <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter Property="Background" Value="#c09c0c" />
-                            <Setter Property="Foreground" Value="White" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBox.Style>
-        </TextBox>
-        <TextBox x:Name="tbUcenikJMBG" VerticalContentAlignment="Center" Width="250" Height="45" BorderBrush="#786207" Padding="10" Margin="45,304,45,137">
-            <TextBox.Style>
-                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                    <Style.Resources>
-                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-                            <VisualBrush.Visual>
-                                <Label Content="JMBG ucenika..." Foreground="#786207" />
-                            </VisualBrush.Visual>
-                        </VisualBrush>
-                    </Style.Resources>
-                    <Style.Triggers>
-                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                        </Trigger>
-                        <Trigger Property="Text" Value="{x:Null}">
-                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                        </Trigger>
-                        <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter Property="Background" Value="#c09c0c" />
+                            <Setter Property="Background" Value="#cf4436" />
                             <Setter Property="Foreground" Value="White" />
                         </Trigger>
                     </Style.Triggers>
@@ -142,7 +92,7 @@
             </TextBox.Style>
         </TextBox>
 
-        <ComboBox x:Name="cbProfesori" DisplayMemberPath="Profesor" SelectedValuePath="ProfesorID" Width="250" Height="45" VerticalContentAlignment="Center" Margin="45,354,45,87" BorderBrush="#786207" Background="#c09c0c"/>
+        <ComboBox x:Name="cbInstrumenti" DisplayMemberPath="InstrumentNaziv" SelectedValuePath="InstrumentID" Width="250" Height="45" VerticalContentAlignment="Center" Margin="45,254,45,187" BorderBrush="#786207" Background="#c09c0c"/>
 
         <Button x:Name="btnAdd" Click="btnAdd_Click" Cursor="Hand" VerticalAlignment="Bottom" Height="70" BorderBrush="{x:Null}" Foreground="{x:Null}">
             <Button.Effect>
@@ -150,7 +100,7 @@
             </Button.Effect>
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background" Value="#f1c40f"/>
+                    <Setter Property="Background" Value="#e74c3c"/>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type Button}">
@@ -162,7 +112,7 @@
                     </Setter>
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#c09c0c"/>
+                            <Setter Property="Background" Value="#cf4436"/>
                         </Trigger>
                     </Style.Triggers>
                 </Style>

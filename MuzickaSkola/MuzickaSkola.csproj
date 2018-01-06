@@ -54,6 +54,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Forms\DodajInstrument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\DodajIspit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\DodajProfesora.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\DodajUcenika.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -67,6 +79,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Connection.cs" />
+    <Compile Include="Forms\DodajInstrument.xaml.cs">
+      <DependentUpon>DodajInstrument.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DodajIspit.xaml.cs">
+      <DependentUpon>DodajIspit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DodajProfesora.xaml.cs">
+      <DependentUpon>DodajProfesora.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DodajUcenika.xaml.cs">
       <DependentUpon>DodajUcenika.xaml</DependentUpon>
     </Compile>
