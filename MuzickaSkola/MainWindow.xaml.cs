@@ -73,8 +73,11 @@ namespace MuzickaSkola
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            // Dodati diskonektovanje 
-            this.Close();
+            this.blurEffect.Radius = 5;
+            this.Effect = this.blurEffect;
+            Exit exit = new Exit();
+            exit.ShowDialog();
+            this.Effect = null;
         }
 
         private void setInactive(int inAc)
