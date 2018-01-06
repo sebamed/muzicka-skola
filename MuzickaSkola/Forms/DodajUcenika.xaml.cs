@@ -44,7 +44,8 @@ namespace MuzickaSkola.Forms
             catch (SqlException)
             {
                 MessageBox.Show("Error with database!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
-            } finally
+            }
+            finally
             {
                 this.conn.Close();
             }
@@ -57,21 +58,41 @@ namespace MuzickaSkola.Forms
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+
             if (String.IsNullOrEmpty(this.tbUcenikIme.Text) || String.IsNullOrEmpty(this.tbUcenikPrezime.Text) || String.IsNullOrEmpty(this.tbUcenikDatumRodjenja.Text) || String.IsNullOrEmpty(this.tbUcenikJMBG.Text))
             {
                 MessageBox.Show("Morate popuniti sva polja!", "Upozorenje!", MessageBoxButton.OK, MessageBoxImage.Warning);
-            } else
+            }
+            else
             {
                 try
                 {
                     this.conn.Open();
-                    this.query = @"insert into tblUcenik(UcenikIme, UcenikPrezime, UcenikDatumRodjenja, UcenikJMBG, ProfesorID) values('" + this.tbUcenikIme.Text + "', '" +
-                                                                                                                                        this.tbUcenikPrezime.Text + "', '" +
-                                                                                                                                        this.tbUcenikDatumRodjenja.Text + "', '" +
-                                                                                                                                        this.tbUcenikJMBG.Text + "', " +
-                                                                                                                                        this.cbProfesori.SelectedValue + ")";
+
+                    if (MainWindow.edit)
+                    {
+                        DataRowView row = (DataRowView)MainWindow.selectedRow;
+                        this.query = @"update tblUcenik set UcenikIme = '" + this.tbUcenikIme.Text + 
+                                                        "', UcenikPrezime = '" + this.tbUcenikPrezime.Text + 
+                                                        "', UcenikJMBG = '" + this.tbUcenikJMBG.Text + 
+                                                        "', UcenikDatumRodjenja = '" + this.tbUcenikDatumRodjenja.Text + 
+                                                        "', ProfesorID = " + this.cbProfesori.SelectedValue + 
+                                                        " where UcenikID = " + row["ID"];
+                        MainWindow.selectedRow = null;
+                    }
+                    else
+                    {
+
+                        this.query = @"insert into tblUcenik(UcenikIme, UcenikPrezime, UcenikDatumRodjenja, UcenikJMBG, ProfesorID) values('" + this.tbUcenikIme.Text + "', '" +
+                                                                                                                                            this.tbUcenikPrezime.Text + "', '" +
+                                                                                                                                            this.tbUcenikDatumRodjenja.Text + "', '" +
+                                                                                                                                            this.tbUcenikJMBG.Text + "', " +
+                                                                                                                                            this.cbProfesori.SelectedValue + ")";
+                    }
+
                     SqlCommand cmd = new SqlCommand(this.query, this.conn);
                     cmd.ExecuteNonQuery();
+
                     this.Close();
                 }
                 catch (SqlException)
@@ -84,5 +105,6 @@ namespace MuzickaSkola.Forms
                 }
             }
         }
+
     }
 }

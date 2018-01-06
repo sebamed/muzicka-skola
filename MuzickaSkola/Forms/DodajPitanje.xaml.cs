@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -29,14 +30,27 @@ namespace MuzickaSkola.Forms
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if(String.IsNullOrEmpty(this.tbPitanjeNaslov.Text) || String.IsNullOrEmpty(this.tbPitanjeText.Text) || String.IsNullOrEmpty(this.tbPitanjeTacanOdgovor.Text)){
+            if (String.IsNullOrEmpty(this.tbPitanjeNaslov.Text) || String.IsNullOrEmpty(this.tbPitanjeText.Text) || String.IsNullOrEmpty(this.tbPitanjeTacanOdgovor.Text))
+            {
                 MessageBox.Show("Morate popuniti sva polja!", "Upozorenje!", MessageBoxButton.OK, MessageBoxImage.Warning);
-            } else
+            }
+            else
             {
                 try
                 {
                     this.conn.Open();
-                    this.query = @"insert into tblPitanje(PitanjeNaslov, PitanjeText, PitanjeTacanOdgovor) values('" + this.tbPitanjeNaslov.Text + "', '" + this.tbPitanjeText.Text + "', '" + this.tbPitanjeTacanOdgovor.Text + "')";
+
+                    if (MainWindow.edit)
+                    {
+                        DataRowView row = (DataRowView)MainWindow.selectedRow;
+                        this.query = @"update tblPitanje set PitanjeNaslov = '" + this.tbPitanjeNaslov.Text + "', PitanjeText = '" + this.tbPitanjeText.Text + "', PitanjeTacanOdgovor = '" + this.tbPitanjeTacanOdgovor.Text + "' where PitanjeID = " + row["ID"];
+                        MainWindow.selectedRow = null;
+                    }
+                    else
+                    {
+
+                        this.query = @"insert into tblPitanje(PitanjeNaslov, PitanjeText, PitanjeTacanOdgovor) values('" + this.tbPitanjeNaslov.Text + "', '" + this.tbPitanjeText.Text + "', '" + this.tbPitanjeTacanOdgovor.Text + "')";
+                    }
                     SqlCommand cmd = new SqlCommand(this.query, this.conn);
                     cmd.ExecuteNonQuery();
                     this.Close();

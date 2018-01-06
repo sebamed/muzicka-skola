@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -46,8 +47,18 @@ namespace MuzickaSkola.Forms
                 try
                 {
                     this.conn.Open();
-                    this.query = @"insert into tblIspitanik(IspitanikIme, IspitanikPrezime, Username, Password) values('" + this.tbIspitanikIme.Text + "', '" + this.tbIspitanikPrezime.Text + "', '"
+
+                    if (MainWindow.edit)
+                    {
+                        DataRowView row = (DataRowView)MainWindow.selectedRow;
+                        this.query = @"update tblIspitanik set IspitanikIme = '" + this.tbIspitanikIme.Text + "', IspitanikPrezime = '" + this.tbIspitanikPrezime.Text + "', Username = '" + this.tbIspitanikUsername.Text + "', Password = '" + this.tbIspitanikPassword.Text + "' where IspitanikID = " + row["ID"];
+                        MainWindow.selectedRow = null;
+                    }
+                    else
+                    {
+                        this.query = @"insert into tblIspitanik(IspitanikIme, IspitanikPrezime, Username, Password) values('" + this.tbIspitanikIme.Text + "', '" + this.tbIspitanikPrezime.Text + "', '"
                                                                                                                                                      + this.tbIspitanikUsername.Text + "', '" + this.tbIspitanikPassword.Text + "')";
+                    }
                     SqlCommand cmd = new SqlCommand(this.query, this.conn);
                     cmd.ExecuteNonQuery();
                     this.Close();

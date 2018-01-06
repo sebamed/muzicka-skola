@@ -67,8 +67,17 @@ namespace MuzickaSkola.Forms
                 try
                 {
                     this.conn.Open();
-                    this.query = @"insert into tblProfesor(ProfesorIme, ProfesorPrezime, InstrumentID) values('" + this.tbProfesorIme.Text + "', '" + this.tbProfesorPrezime.Text + "', " +
+                    if (MainWindow.edit)
+                    {
+                        DataRowView row = (DataRowView)MainWindow.selectedRow;
+                        this.query = @"update tblProfesor set ProfesorIme = '" + this.tbProfesorIme.Text + "', ProfesorPrezime = '" + this.tbProfesorPrezime.Text + "', InstrumentID = " + this.cbInstrumenti.SelectedValue + " where ProfesorID = " + row["ID"]; 
+                        MainWindow.selectedRow = null;
+                    }
+                    else
+                    {
+                        this.query = @"insert into tblProfesor(ProfesorIme, ProfesorPrezime, InstrumentID) values('" + this.tbProfesorIme.Text + "', '" + this.tbProfesorPrezime.Text + "', " +
                                                                                                                                         this.cbInstrumenti.SelectedValue + ")";
+                    }
                     SqlCommand cmd = new SqlCommand(this.query, this.conn);
                     cmd.ExecuteNonQuery();
                     this.Close();

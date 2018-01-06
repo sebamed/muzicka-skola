@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -35,7 +36,17 @@ namespace MuzickaSkola.Forms
             try
             {
                 this.conn.Open();
-                this.query = @"insert into tblInstrument(InstrumentNaziv) values ('" + this.tbInstrumentNaziv.Text + "')";
+
+                if (MainWindow.edit)
+                {
+                    DataRowView row = (DataRowView)MainWindow.selectedRow;
+                    this.query = @"update tblInstrument set InstrumentNaziv = '" + this.tbInstrumentNaziv.Text + "' where InstrumentID = " + row["ID"];
+                    MainWindow.selectedRow = null;
+                }
+                else
+                {
+                    this.query = @"insert into tblInstrument(InstrumentNaziv) values ('" + this.tbInstrumentNaziv.Text + "')";
+                }
                 SqlCommand cmd = new SqlCommand(this.query, this.conn);
                 cmd.ExecuteNonQuery();
                 this.Close();

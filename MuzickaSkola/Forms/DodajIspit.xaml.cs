@@ -87,14 +87,29 @@ namespace MuzickaSkola.Forms
                 try
                 {
                     this.conn.Open();
+                    if (MainWindow.edit)
+                    {
+                        DataRowView row = (DataRowView)MainWindow.selectedRow;
+                        this.query = @"update tblIspit set UcenikID = " + this.cbUcenici.SelectedValue +
+                                                                        ", IspitanikID = " + this.cbIspitanici.SelectedValue +
+                                                                        ", PitanjeID  = " + this.cbPitanja.SelectedValue +
+                                                                        ", IspitUkupnoBodova = " + this.tbUkupnoBodova.Text +
+                                                                        ", IspitOsvojenihBodova = " + this.tbOsvojenihBodova.Text +
+                                                                        ", IspitPolozen = " + Convert.ToInt32(this.chbPolozen.IsChecked) +
+                                                                        " where IspitID = " + row["ID"];
 
-                    this.query = @"insert into tblIspit(UcenikID, IspitanikID, PitanjeID, IspitUkupnoBodova, IspitOsvojenihBodova, IspitPolozen) values (" + this.cbUcenici.SelectedValue +
+                        MainWindow.selectedRow = null;
+                    }
+                    else
+                    {
+                        this.query = @"insert into tblIspit(UcenikID, IspitanikID, PitanjeID, IspitUkupnoBodova, IspitOsvojenihBodova, IspitPolozen) values (" + this.cbUcenici.SelectedValue +
                                                                                                                                                         ", " + this.cbIspitanici.SelectedValue +
                                                                                                                                                         ", " + this.cbPitanja.SelectedValue +
                                                                                                                                                         ", " + int.Parse(this.tbUkupnoBodova.Text) +
                                                                                                                                                         ", " + int.Parse(this.tbOsvojenihBodova.Text) +
                                                                                                                                                         ", " + Convert.ToInt32(this.chbPolozen.IsChecked) +
                                                                                                                                                         ")";
+                    }
                     SqlCommand sql = new SqlCommand(this.query, this.conn);
                     sql.ExecuteNonQuery();
                     this.Close();

@@ -30,7 +30,11 @@ namespace MuzickaSkola
 
         private string query = "";
 
+        public static object selectedRow = null;
+
         private bool SidebarOpened = false;
+        public static bool edit = false;
+
         private int currentlyActive = 0;
         private int previouslyActive = 0;
 
@@ -527,6 +531,268 @@ namespace MuzickaSkola
         private void btnRNRemove_Click(object sender, RoutedEventArgs e)
         {
             this.deleteFromDb(sender, e);
+        }
+
+        private void btnRNEdit_Click(object sender, RoutedEventArgs e)
+        {
+            this.chooseToEdit(sender, e);
+        }
+
+        private void editUcenik(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                edit = true;
+                Add dodajUcenika = new Add();
+
+                this.conn.Open();
+                DataRowView row = (DataRowView)this.dgMain.SelectedItems[0];
+                selectedRow = row;
+                this.query = @"select * from tblUcenik where UcenikID = " + row["ID"];
+
+                SqlCommand cmd = new SqlCommand(this.query, this.conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    dodajUcenika.tbUcenikIme.Text = reader["UcenikIme"].ToString();
+                    dodajUcenika.tbUcenikPrezime.Text = reader["UcenikPrezime"].ToString();
+                    dodajUcenika.tbUcenikDatumRodjenja.Text = reader["UcenikDatumRodjenja"].ToString();
+                    dodajUcenika.tbUcenikJMBG.Text = reader["UcenikJMBG"].ToString();
+                    dodajUcenika.cbProfesori.SelectedValue = reader["ProfesorID"].ToString();
+                }
+
+                dodajUcenika.ShowDialog();
+            } catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Morate selektovati red!");
+            }
+            finally
+            {
+                this.conn.Close();
+                this.btnRNRefresh_Click(sender, e);
+                this.dgMain.SelectedIndex = this.dgMain.Items.Count - 1;
+                this.dgMain.ScrollIntoView(this.dgMain.SelectedItem);
+                edit = false;
+            }
+        }
+
+        private void editProfesor(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                edit = true;
+                DodajProfesora dodajProfesora = new DodajProfesora();
+
+                this.conn.Open();
+                DataRowView row = (DataRowView)this.dgMain.SelectedItems[0];
+                selectedRow = row;
+                this.query = @"select * from tblProfesor where ProfesorID = " + row["ID"];
+
+                SqlCommand cmd = new SqlCommand(this.query, this.conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    dodajProfesora.tbProfesorIme.Text = reader["ProfesorIme"].ToString();
+                    dodajProfesora.tbProfesorPrezime.Text = reader["ProfesorPrezime"].ToString();
+                    dodajProfesora.cbInstrumenti.SelectedValue = reader["InstrumentID"].ToString();
+                }
+
+                dodajProfesora.ShowDialog();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Morate selektovati red!");
+            }
+            finally
+            {
+                this.conn.Close();
+                this.btnRNRefresh_Click(sender, e);
+                this.dgMain.SelectedIndex = this.dgMain.Items.Count - 1;
+                this.dgMain.ScrollIntoView(this.dgMain.SelectedItem);
+                edit = false;
+            }
+        }
+
+        private void editInstrument(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                edit = true;
+                DodajInstrument dodajInstrument = new DodajInstrument();
+
+                this.conn.Open();
+                DataRowView row = (DataRowView)this.dgMain.SelectedItems[0];
+                selectedRow = row;
+                this.query = @"select * from tblInstrument where InstrumentID = " + row["ID"];
+
+                SqlCommand cmd = new SqlCommand(this.query, this.conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    dodajInstrument.tbInstrumentNaziv.Text = reader["InstrumentNaziv"].ToString();
+                }
+
+                dodajInstrument.ShowDialog();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Morate selektovati red!");
+            }
+            finally
+            {
+                this.conn.Close();
+                this.btnRNRefresh_Click(sender, e);
+                this.dgMain.SelectedIndex = this.dgMain.Items.Count - 1;
+                this.dgMain.ScrollIntoView(this.dgMain.SelectedItem);
+                edit = false;
+            }
+        }
+
+        private void editIspitanik(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                edit = true;
+                DodajIspitanika dodajIspitanika = new DodajIspitanika();
+
+                this.conn.Open();
+                DataRowView row = (DataRowView)this.dgMain.SelectedItems[0];
+                selectedRow = row;
+                this.query = @"select * from tblIspitanik where IspitanikID = " + row["ID"];
+
+                SqlCommand cmd = new SqlCommand(this.query, this.conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    dodajIspitanika.tbIspitanikIme.Text = reader["IspitanikIme"].ToString();
+                    dodajIspitanika.tbIspitanikPrezime.Text = reader["IspitanikPrezime"].ToString();
+                    dodajIspitanika.tbIspitanikUsername.Text = reader["Username"].ToString();
+                    dodajIspitanika.tbIspitanikPassword.Text = reader["Password"].ToString();
+                }
+
+                dodajIspitanika.ShowDialog();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Morate selektovati red!");
+            }
+            finally
+            {
+                this.conn.Close();
+                this.btnRNRefresh_Click(sender, e);
+                this.dgMain.SelectedIndex = this.dgMain.Items.Count - 1;
+                this.dgMain.ScrollIntoView(this.dgMain.SelectedItem);
+                edit = false;
+            }
+        }
+
+        private void editIspit(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                edit = true;
+                DodajIspit dodajIspit = new DodajIspit();
+
+                this.conn.Open();
+                DataRowView row = (DataRowView)this.dgMain.SelectedItems[0];
+                selectedRow = row;
+                this.query = @"select * from tblIspit where IspitID = " + row["ID"];
+
+                SqlCommand cmd = new SqlCommand(this.query, this.conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    dodajIspit.cbUcenici.SelectedValue = reader["UcenikID"].ToString();
+                    dodajIspit.cbIspitanici.SelectedValue = reader["IspitanikID"].ToString();
+                    dodajIspit.cbPitanja.SelectedValue = reader["PitanjeID"].ToString();
+                    dodajIspit.tbOsvojenihBodova.Text = reader["IspitOsvojenihBodova"].ToString();
+                }
+
+                dodajIspit.ShowDialog();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Morate selektovati red!");
+            }
+            finally
+            {
+                this.conn.Close();
+                this.btnRNRefresh_Click(sender, e);
+                this.dgMain.SelectedIndex = this.dgMain.Items.Count - 1;
+                this.dgMain.ScrollIntoView(this.dgMain.SelectedItem);
+                edit = false;
+            }
+        }
+
+        private void editPitanje(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                edit = true;
+                DodajPitanje dodajPitanje = new DodajPitanje();
+
+                this.conn.Open();
+                DataRowView row = (DataRowView)this.dgMain.SelectedItems[0];
+                selectedRow = row;
+                this.query = @"select * from tblPitanje where PitanjeID = " + row["ID"];
+
+                SqlCommand cmd = new SqlCommand(this.query, this.conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    dodajPitanje.tbPitanjeNaslov.Text = reader["PitanjeNaslov"].ToString();
+                    dodajPitanje.tbPitanjeText.Text = reader["PitanjeText"].ToString();
+                    dodajPitanje.tbPitanjeTacanOdgovor.Text = reader["PitanjeTacanOdgovor"].ToString();
+                }
+
+                dodajPitanje.ShowDialog();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Morate selektovati red!");
+            }
+            finally
+            {
+                this.conn.Close();
+                this.btnRNRefresh_Click(sender, e);
+                this.dgMain.SelectedIndex = this.dgMain.Items.Count - 1;
+                this.dgMain.ScrollIntoView(this.dgMain.SelectedItem);
+                edit = false;
+            }
+        }
+
+        private void chooseToEdit(object sender, RoutedEventArgs e)
+        {
+            this.blurEffect.Radius = 5;
+            this.Effect = this.blurEffect;
+            switch (this.currentlyActive)
+            {
+                case 1:
+                    this.editUcenik(sender, e);
+                    break;
+                case 2:
+                    this.editProfesor(sender, e);
+                    break;
+                case 3:
+                    this.editInstrument(sender, e);
+                    break;
+                case 4:
+                    this.editIspitanik(sender, e);
+                    break;
+                case 5:
+                    this.editIspit(sender, e);
+                    break;
+                case 6:
+                    this.editPitanje(sender, e);
+                    break;
+            }
+            this.Effect = null;
         }
     }
 }

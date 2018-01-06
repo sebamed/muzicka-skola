@@ -316,7 +316,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button x:Name="btnRNEdit" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,221,0,269">
+            <Button x:Name="btnRNEdit" Click="btnRNEdit_Click" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,221,0,269">
                 <Button.ToolTip>
                     <TextBlock>
                 <Run>Izmeni</Run>
