@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,16 +19,95 @@ namespace MuzickaSkola.Forms
 
     public partial class DodajIspit : Window
     {
+        private int minZaProlaz = 50;
+
+        private SqlConnection conn = Connection.getConnection();
+
+        private string query = "";
+
         public DodajIspit()
         {
             InitializeComponent();
             this.tbUkupnoBodova.Text = "100";
             this.chbPolozen.IsChecked = false;
+            this.initializeComboBoxes();
         }
 
+        private void initializeComboBoxes()
+        {
+            // Ucenik
+            try
+            {
+                this.conn.Open();
+
+                // Ucenici
+                this.query = @"select UcenikID, UcenikIme + ' ' + UcenikPrezime as 'Ucenik' from tblUcenik";
+                DataTable dtUcenici = new DataTable();
+                SqlDataAdapter daUcenici = new SqlDataAdapter(this.query, this.conn);
+                daUcenici.Fill(dtUcenici);
+
+                this.cbUcenici.ItemsSource = dtUcenici.DefaultView;
+                this.cbUcenici.SelectedIndex = 0;
+
+                // Ispitanici
+                this.query = @"select IspitanikID, IspitanikIme + ' ' + IspitanikPrezime as 'Ispitanik' from tblIspitanik";
+                DataTable dtIspitanici = new DataTable();
+                SqlDataAdapter daIspitanici = new SqlDataAdapter(this.query, this.conn);
+                daIspitanici.Fill(dtIspitanici);
+
+                this.cbIspitanici.ItemsSource = dtIspitanici.DefaultView;
+                this.cbIspitanici.SelectedIndex = 0;
+
+                // Pitanja
+                this.query = @"select PitanjeID, PitanjeNaslov as 'Pitanje' from tblPitanje";
+                DataTable dtPitanja = new DataTable();
+                SqlDataAdapter daPitanja = new SqlDataAdapter(this.query, this.conn);
+                daPitanja.Fill(dtPitanja);
+
+                this.cbPitanja.ItemsSource = dtPitanja.DefaultView;
+                this.cbPitanja.SelectedIndex = 0;
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Error with database!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+        }
+        
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+            if (String.IsNullOrEmpty(this.tbOsvojenihBodova.Text))
+            {
+                MessageBox.Show("Morate popuniti sva polja!", "Upozorenje!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            } else
+            {
+                try
+                {
+                    this.conn.Open();
 
+                    this.query = @"insert into tblIspit(UcenikID, IspitanikID, PitanjeID, IspitUkupnoBodova, IspitOsvojenihBodova, IspitPolozen) values (" + this.cbUcenici.SelectedValue +
+                                                                                                                                                        ", " + this.cbIspitanici.SelectedValue +
+                                                                                                                                                        ", " + this.cbPitanja.SelectedValue +
+                                                                                                                                                        ", " + int.Parse(this.tbUkupnoBodova.Text) +
+                                                                                                                                                        ", " + int.Parse(this.tbOsvojenihBodova.Text) +
+                                                                                                                                                        ", " + Convert.ToInt32(this.chbPolozen.IsChecked) +
+                                                                                                                                                        ")";
+                    SqlCommand sql = new SqlCommand(this.query, this.conn);
+                    sql.ExecuteNonQuery();
+                    this.Close();
+                }
+                catch (SqlException)
+                {
+                    MessageBox.Show("Error with statement!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                finally
+                {
+                    this.conn.Close();
+                }
+            }
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -44,10 +125,6 @@ namespace MuzickaSkola.Forms
             } catch
             {
                 this.tbOsvojenihBodova.Text = "";
-            }
-            finally
-            {
-
             }
             if (!isInteger)
             {
@@ -82,10 +159,11 @@ namespace MuzickaSkola.Forms
             }
             else if (this.tbOsvojenihBodova.Text.Length == 2)
             {
-                if (int.Parse(this.tbOsvojenihBodova.Text) > 50)
+                if (int.Parse(this.tbOsvojenihBodova.Text) > this.minZaProlaz)
                 {
                     this.chbPolozen.IsChecked = true;
-                } else if (int.Parse(this.tbOsvojenihBodova.Text) <= 50){
+                } else if (int.Parse(this.tbOsvojenihBodova.Text) <= this.minZaProlaz)
+                {
                     this.chbPolozen.IsChecked = false;
                 }
             }

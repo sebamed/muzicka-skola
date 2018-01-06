@@ -444,9 +444,17 @@ namespace MuzickaSkola
                     DodajInstrument dodajInstrument = new DodajInstrument();
                     dodajInstrument.ShowDialog();
                     break;
+                case 4: // otvori dodaj ispitanika
+                    DodajIspitanika dodajIspitanika = new DodajIspitanika();
+                    dodajIspitanika.ShowDialog();
+                    break;
                 case 5: // otvori dodaj ispit
                     DodajIspit dodajIspit = new DodajIspit();
                     dodajIspit.ShowDialog();
+                    break;
+                case 6: // otvori dodaj ispit
+                    DodajPitanje dodajPitanje = new DodajPitanje();
+                    dodajPitanje.ShowDialog();
                     break;
             }
             this.Effect = null;

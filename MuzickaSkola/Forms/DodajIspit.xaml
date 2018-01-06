@@ -71,7 +71,7 @@
                 <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                     <Style.Resources>
                         <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-                            
+
                         </VisualBrush>
                     </Style.Resources>
                     <Style.Triggers>
@@ -90,11 +90,15 @@
             </TextBox.Style>
         </TextBox>
 
-        <ComboBox x:Name="cbUcenici" DisplayMemberPath="Ucenik" SelectedValuePath="UcenikID" Width="250" Height="45" VerticalContentAlignment="Center" Margin="45,154,45,287" BorderBrush="#786207" Background="#c09c0c"/>
+        <Label Content="UCENIK:" HorizontalAlignment="Center" Margin="45,154,223,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="10" FontWeight="Bold" Foreground="#FF786207" Width="72" Height="45"/>
+        <ComboBox x:Name="cbUcenici" DisplayMemberPath="Ucenik" SelectedValuePath="UcenikID" Height="45" VerticalContentAlignment="Center" Margin="122,154,45,287" BorderBrush="#786207" Background="#c09c0c"/>
 
-        <ComboBox x:Name="cbIspitanici" DisplayMemberPath="Ucenik" SelectedValuePath="UcenikID" Width="250" Height="45" VerticalContentAlignment="Center" Margin="45,204,45,237" BorderBrush="#786207" Background="#c09c0c"/>
-        <ComboBox x:Name="cbPitanja" DisplayMemberPath="Ucenik" SelectedValuePath="UcenikID" Width="250" Height="45" VerticalContentAlignment="Center" Margin="45,254,45,187" BorderBrush="#786207" Background="#c09c0c"/>
-        
+        <Label Content="ISPITANIK:" HorizontalAlignment="Center" Margin="45,204,223,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="10" FontWeight="Bold" Foreground="#FF786207" Width="72" Height="45"/>
+        <ComboBox x:Name="cbIspitanici" DisplayMemberPath="Ispitanik" SelectedValuePath="IspitanikID" Height="45" VerticalContentAlignment="Center" Margin="122,204,45,237" BorderBrush="#786207" Background="#c09c0c"/>
+
+        <Label Content="PITANJE:" HorizontalAlignment="Center" Margin="45,254,223,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="10" FontWeight="Bold" Foreground="#FF786207" Width="72" Height="45"/>
+        <ComboBox x:Name="cbPitanja" DisplayMemberPath="Pitanje" SelectedValuePath="PitanjeID" Height="45" VerticalContentAlignment="Center" Margin="122,254,45,187" BorderBrush="#786207" Background="#c09c0c"/>
+
         <Button x:Name="btnAdd" Click="btnAdd_Click" Cursor="Hand" VerticalAlignment="Bottom" Height="70" BorderBrush="{x:Null}" Foreground="{x:Null}">
             <Button.Effect>
                 <DropShadowEffect Direction="90" ShadowDepth="3" Opacity="0.3"/>
