@@ -47,7 +47,10 @@ namespace MuzickaSkola
             this.RegisterName("blurEffect", blurEffect);
 
             this.fillInHomeInfo();
+
         }
+
+
 
         private void fillInHomeInfo()
         {
@@ -104,6 +107,7 @@ namespace MuzickaSkola
             if (this.SidebarOpened)
             {
                 ShowHideMenu("sbHideSidenav", this.spSideNav);
+                this.lblMarker.Effect = null;
                 if (this.currentlyActive == 0)
                 {
                     this.grdHome.Effect = null;
@@ -117,6 +121,7 @@ namespace MuzickaSkola
             {
                 ShowHideMenu("sbShowSidenav", this.spSideNav);
                 this.blurEffect.Radius = 5;
+                this.lblMarker.Effect = this.blurEffect;
                 if (this.currentlyActive == 0)
                 {
                     this.grdHome.Effect = this.blurEffect;
@@ -323,8 +328,14 @@ namespace MuzickaSkola
             }
         }
 
+        private void setTextForMarker(string text)
+        {
+            this.lblMarker.Content = text;
+        }
+
         private void btnSNPocetna_Click(object sender, RoutedEventArgs e)
         {
+            this.setTextForMarker("pocetna");
             // Glavni meni
             this.previouslyActive = this.currentlyActive;
             this.currentlyActive = 0;
@@ -342,6 +353,7 @@ namespace MuzickaSkola
 
         private void btnSNUcenik_Click(object sender, RoutedEventArgs e)
         {
+            this.setTextForMarker("spisak ucenika");
             this.setHomeScreenVisible();
             // Glavni meni
             this.previouslyActive = this.currentlyActive;
@@ -358,6 +370,7 @@ namespace MuzickaSkola
 
         private void btnSNProfesor_Click(object sender, RoutedEventArgs e)
         {
+            this.setTextForMarker("spisak profesora");
             this.setHomeScreenVisible();
             // Glavni meni
             this.previouslyActive = this.currentlyActive;
@@ -375,6 +388,7 @@ namespace MuzickaSkola
 
         private void btnSNInstrument_Click(object sender, RoutedEventArgs e)
         {
+            this.setTextForMarker("spisak instrumenata");
             this.setHomeScreenVisible();
             // Glavni meni
             this.previouslyActive = this.currentlyActive;
@@ -392,6 +406,7 @@ namespace MuzickaSkola
 
         private void btnSNIspitanik_Click(object sender, RoutedEventArgs e)
         {
+            this.setTextForMarker("spisak ispitanika");
             this.setHomeScreenVisible();
             // Glavni meni
             this.previouslyActive = this.currentlyActive;
@@ -408,6 +423,7 @@ namespace MuzickaSkola
 
         private void btnSNIspit_Click(object sender, RoutedEventArgs e)
         {
+            this.setTextForMarker("spisak ispita");
             this.setHomeScreenVisible();
             // Glavni meni
             this.previouslyActive = this.currentlyActive;
@@ -424,6 +440,7 @@ namespace MuzickaSkola
 
         private void btnSNPitanja_Click(object sender, RoutedEventArgs e)
         {
+            this.setTextForMarker("spisak pitanja");
             this.setHomeScreenVisible();
             // Glavni meni
             this.previouslyActive = this.currentlyActive;

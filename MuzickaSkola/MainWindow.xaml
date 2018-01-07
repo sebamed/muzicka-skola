@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:MuzickaSkola"
         mc:Ignorable="d"
         Title="Muzicka Skola" Height="535" Width="862.308" Visibility="Visible" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="Images/icons8_Medium_Old.ico">
@@ -465,8 +466,8 @@
             <Label x:Name="lblIspitanika" Content="12" FontSize="58" Foreground="#2ecc71" HorizontalAlignment="Left" Margin="85,10,0,0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="82" Width="93" FontFamily="Segoe UI Light" Grid.Column="1"/>
             <Label Content="ispitanika" FontSize="16" Foreground="#2ecc71" HorizontalAlignment="Left" Margin="171,18,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="37" Width="82" FontFamily="Segoe UI Light" Grid.Column="1"/>
 
-
         </Grid>
+        <Label x:Name="lblMarker" Content="pocetna" HorizontalAlignment="Left" Margin="81,10,0,0" Foreground="#FFF3F3F3" FontSize="48" VerticalAlignment="Top" Width="466" Height="74" FontFamily="Segoe UI Semibold"/>
 
     </Grid>
 </Window>
