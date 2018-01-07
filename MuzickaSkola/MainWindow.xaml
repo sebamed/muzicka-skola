@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MuzickaSkola"
         mc:Ignorable="d"
-        Title="Muzicka Skola" Height="535" Width="862.308" Visibility="Visible" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Muzicka Skola" Height="535" Width="862.308" Visibility="Visible" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="Images/icons8_Medium_Old.ico">
     <Window.Effect>
         <DropShadowEffect BlurRadius="20"/>
     </Window.Effect>
@@ -459,7 +459,8 @@
             <Label x:Name="lblIspita" Content="12" FontSize="58" Foreground="#3498db" HorizontalAlignment="Left" Margin="419,10,0,0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="82" Width="94" FontFamily="Segoe UI Light" Grid.ColumnSpan="2"/>
             <Label Content="ispita" FontSize="16" Foreground="#3498db" HorizontalAlignment="Left" Margin="46,18,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="37" Width="82" FontFamily="Segoe UI Light" Grid.Column="1"/>
             <Label x:Name="lblPolozenihIspita" Content="polozenih" FontSize="12" Foreground="#246a99" HorizontalAlignment="Left" Margin="48,55,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="37" Width="128" FontFamily="Segoe UI Light" Grid.Column="1"/>
-            <Label Content="od cega" FontSize="12" Foreground="#246a99" HorizontalAlignment="Left" Margin="48,40,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="37" Width="128" FontFamily="Segoe UI Light" Grid.Column="1"/>
+            <Label FontSize="12" Foreground="#246a99" HorizontalAlignment="Left" Margin="48,40,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="37" Width="128" FontFamily="Segoe UI Light" Grid.Column="1">
+            </Label>
 
             <Label x:Name="lblIspitanika" Content="12" FontSize="58" Foreground="#2ecc71" HorizontalAlignment="Left" Margin="85,10,0,0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="82" Width="93" FontFamily="Segoe UI Light" Grid.Column="1"/>
             <Label Content="ispitanika" FontSize="16" Foreground="#2ecc71" HorizontalAlignment="Left" Margin="171,18,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="37" Width="82" FontFamily="Segoe UI Light" Grid.Column="1"/>

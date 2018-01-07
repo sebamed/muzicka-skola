@@ -230,5 +230,8 @@
   <ItemGroup>
     <Resource Include="Images\icons8_Refresh_52px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8_Medium_Old.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

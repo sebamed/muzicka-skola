@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MuzickaSkola.Forms"
         mc:Ignorable="d"
-        Title="Dodaj Ispit" WindowStyle="None" Background="#d8b00d" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Height="486" Width="340">
+        Title="Dodaj Ispit" WindowStyle="None" Background="#d8b00d" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Height="486" Width="340" Icon="/MuzickaSkola;component/Images/icons8_Medium_Old.ico">
     <Grid>
         <Border Background="#f1c40f" VerticalAlignment="Top" Height="50">
             <Border.Effect>

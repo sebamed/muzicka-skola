@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MuzickaSkola.Forms"
         mc:Ignorable="d"
-        Title="Dodaj Ispitanika" WindowStyle="None" Background="#29b765" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Height="486" Width="340">
+        Title="Dodaj Ispitanika" WindowStyle="None" Background="#29b765" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Height="486" Width="340" Icon="/MuzickaSkola;component/Images/icons8_Medium_Old.ico">
     <Grid>
         <Border Background="#2ecc71" VerticalAlignment="Top" Height="50">
             <Border.Effect>
