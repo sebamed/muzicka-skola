@@ -104,12 +104,29 @@ namespace MuzickaSkola
             if (this.SidebarOpened)
             {
                 ShowHideMenu("sbHideSidenav", this.spSideNav);
-                this.dgMain.Effect = null;
-            } else
+                if (this.currentlyActive == 0)
+                {
+                    this.grdHome.Effect = null;
+                }
+                else
+                {                 
+                    this.dgMain.Effect = null;
+                }
+            }
+            else
             {
                 ShowHideMenu("sbShowSidenav", this.spSideNav);
                 this.blurEffect.Radius = 5;
-                this.dgMain.Effect = this.blurEffect;
+                if (this.currentlyActive == 0)
+                {
+                    this.grdHome.Effect = this.blurEffect;
+                }
+                else
+                {
+                    this.dgMain.Effect = this.blurEffect;
+                }
+                
+                
             }
         }
 
@@ -300,7 +317,7 @@ namespace MuzickaSkola
 
         private void setHomeScreenVisible()
         {
-            if(this.grdHome.Visibility == Visibility.Visible)
+            if (this.grdHome.Visibility == Visibility.Visible)
             {
                 this.grdHome.Visibility = Visibility.Hidden;
             }
@@ -449,17 +466,22 @@ namespace MuzickaSkola
         {
             switch (this.currentlyActive)
             {
-                case 1: this.query = @"select UcenikID as 'ID', UcenikIme as 'IME', UcenikPrezime as 'PREZIME', UcenikJMBG as 'JMBG', UcenikDatumRodjenja as 'DATUM RODJENJA', ProfesorIme + ProfesorPrezime as 'PROFESOR'
+                case 1:
+                    this.query = @"select UcenikID as 'ID', UcenikIme as 'IME', UcenikPrezime as 'PREZIME', UcenikJMBG as 'JMBG', UcenikDatumRodjenja as 'DATUM RODJENJA', ProfesorIme + ProfesorPrezime as 'PROFESOR'
                             from tblUcenik inner join tblProfesor on tblUcenik.ProfesorID = tblProfesor.ProfesorID";
                     break;
-                case 2: this.query = @"select ProfesorID as 'ID', ProfesorIme as 'IME', ProfesorPrezime as 'PREZIME', InstrumentNaziv as 'INSTRUMENT'  
+                case 2:
+                    this.query = @"select ProfesorID as 'ID', ProfesorIme as 'IME', ProfesorPrezime as 'PREZIME', InstrumentNaziv as 'INSTRUMENT'  
                             from tblProfesor inner join tblInstrument on tblProfesor.InstrumentID = tblInstrument.InstrumentID";
                     break;
-                case 3: this.query = @"select InstrumentID as 'ID', InstrumentNaziv as 'INSTRUMENT' from tblInstrument";
+                case 3:
+                    this.query = @"select InstrumentID as 'ID', InstrumentNaziv as 'INSTRUMENT' from tblInstrument";
                     break;
-                case 4: this.query = @"select IspitanikID as 'ID', IspitanikIme as 'IME', IspitanikPrezime as 'PREZIME', Username as 'USERNAME', Password as 'PASSWORD' from tblIspitanik";
+                case 4:
+                    this.query = @"select IspitanikID as 'ID', IspitanikIme as 'IME', IspitanikPrezime as 'PREZIME', Username as 'USERNAME', Password as 'PASSWORD' from tblIspitanik";
                     break;
-                case 5: this.query = @"select IspitID as 'ID',
+                case 5:
+                    this.query = @"select IspitID as 'ID',
                                     UcenikIme + UcenikPrezime as 'UCENIK', 
                                     IspitanikIme + IspitanikPrezime as 'ISPITANIK',
                                     PitanjeNaslov as 'PITANJE',
@@ -469,7 +491,8 @@ namespace MuzickaSkola
                                     inner join tblIspitanik on tblIspit.IspitanikID = tblIspitanik.IspitanikID
                                     inner join tblPitanje on tblIspit.PitanjeID = tblPitanje.PitanjeID";
                     break;
-                case 6: this.query = @"select PitanjeID as 'ID', PitanjeNaslov as 'NASLOV', PitanjeText as 'PITANJE', PitanjeTacanOdgovor as 'TACAN ODGOVOR' from tblPitanje";
+                case 6:
+                    this.query = @"select PitanjeID as 'ID', PitanjeNaslov as 'NASLOV', PitanjeText as 'PITANJE', PitanjeTacanOdgovor as 'TACAN ODGOVOR' from tblPitanje";
                     break;
             }
 
@@ -482,7 +505,8 @@ namespace MuzickaSkola
                 sqlDA.Fill(dt);
                 this.dgMain.ItemsSource = dt.DefaultView;
                 this.dgMain.Visibility = Visibility.Visible;
-            } catch (Exception)
+            }
+            catch (Exception)
             {
                 MessageBox.Show("Error with connection or query!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -508,7 +532,7 @@ namespace MuzickaSkola
             {
                 case 1: // otvori dodaj ucenika
                     Add addNew = new Add();
-                    addNew.ShowDialog();          
+                    addNew.ShowDialog();
                     break;
                 case 2: // otvori dodaj profesora
                     DodajProfesora dodajProfesora = new DodajProfesora();
@@ -579,13 +603,14 @@ namespace MuzickaSkola
 
                 MessageBoxResult res = MessageBox.Show("Da li ste sigurni da zelite da obrisete " + type + " '" + row[rowType] + "'?", "Upozorenje!", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-                if(res == MessageBoxResult.Yes)
+                if (res == MessageBoxResult.Yes)
                 {
                     SqlCommand cmd = new SqlCommand(this.query, this.conn);
                     cmd.ExecuteNonQuery();
-                } 
+                }
 
-            } catch (SqlException)
+            }
+            catch (SqlException)
             {
                 MessageBox.Show("Podaci koje brisete su povezani sa drugim tabelama!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -597,7 +622,7 @@ namespace MuzickaSkola
             this.btnRNRefresh_Click(sender, e); // refreshuje tabelu
             this.dgMain.SelectedIndex = 0;
         }
-    
+
         private void btnRNRemove_Click(object sender, RoutedEventArgs e)
         {
             this.deleteFromDb(sender, e);
@@ -634,7 +659,8 @@ namespace MuzickaSkola
                 }
 
                 dodajUcenika.ShowDialog();
-            } catch (ArgumentOutOfRangeException)
+            }
+            catch (ArgumentOutOfRangeException)
             {
                 MessageBox.Show("Morate selektovati red!");
             }
