@@ -43,7 +43,9 @@ namespace MuzickaSkola.Forms
                     if (MainWindow.edit)
                     {
                         DataRowView row = (DataRowView)MainWindow.selectedRow;
-                        this.query = @"update tblPitanje set PitanjeNaslov = '" + this.tbPitanjeNaslov.Text + "', PitanjeText = '" + this.tbPitanjeText.Text + "', PitanjeTacanOdgovor = '" + this.tbPitanjeTacanOdgovor.Text + "' where PitanjeID = " + row["ID"];
+                        this.query = @"update tblPitanje set PitanjeNaslov = '" + this.tbPitanjeNaslov.Text + 
+                            "', PitanjeText = '" + this.tbPitanjeText.Text + "', PitanjeTacanOdgovor = '" + this.tbPitanjeTacanOdgovor.Text + 
+                            "' where PitanjeID = " + row["ID"];
                         MainWindow.selectedRow = null;
                     }
                     else

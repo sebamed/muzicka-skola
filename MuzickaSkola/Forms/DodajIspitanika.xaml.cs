@@ -51,7 +51,8 @@ namespace MuzickaSkola.Forms
                     if (MainWindow.edit)
                     {
                         DataRowView row = (DataRowView)MainWindow.selectedRow;
-                        this.query = @"update tblIspitanik set IspitanikIme = '" + this.tbIspitanikIme.Text + "', IspitanikPrezime = '" + this.tbIspitanikPrezime.Text + "', Username = '" + this.tbIspitanikUsername.Text + "', Password = '" + this.tbIspitanikPassword.Text + "' where IspitanikID = " + row["ID"];
+                        this.query = @"update tblIspitanik set IspitanikIme = '" + this.tbIspitanikIme.Text + "', IspitanikPrezime = '" + this.tbIspitanikPrezime.Text + 
+                            "', Username = '" + this.tbIspitanikUsername.Text + "', Password = '" + this.tbIspitanikPassword.Text + "' where IspitanikID = " + row["ID"];
                         MainWindow.selectedRow = null;
                     }
                     else

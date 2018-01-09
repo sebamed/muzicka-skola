@@ -69,7 +69,7 @@ namespace MuzickaSkola.Forms
             }
             catch (SqlException)
             {
-                MessageBox.Show("Error with database!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error with query!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {

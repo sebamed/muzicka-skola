@@ -70,7 +70,8 @@ namespace MuzickaSkola.Forms
                     if (MainWindow.edit)
                     {
                         DataRowView row = (DataRowView)MainWindow.selectedRow;
-                        this.query = @"update tblProfesor set ProfesorIme = '" + this.tbProfesorIme.Text + "', ProfesorPrezime = '" + this.tbProfesorPrezime.Text + "', InstrumentID = " + this.cbInstrumenti.SelectedValue + " where ProfesorID = " + row["ID"]; 
+                        this.query = @"update tblProfesor set ProfesorIme = '" + this.tbProfesorIme.Text + "', ProfesorPrezime = '" + this.tbProfesorPrezime.Text + 
+                                                                "', InstrumentID = " + this.cbInstrumenti.SelectedValue + " where ProfesorID = " + row["ID"]; 
                         MainWindow.selectedRow = null;
                     }
                     else

@@ -31,6 +31,10 @@ namespace MuzickaSkola.Forms
 
         private void btnYes_Click(object sender, RoutedEventArgs e)
         {
+            if (Connection.getConnection() != null)
+            {
+                Connection.getConnection().Close();
+            }       
             System.Windows.Application.Current.Shutdown();
         }
 
